@@ -20,7 +20,9 @@
             android:name=".Views.DetailsPlaces"
             android:exported="true"/>
         <activity
-            android:name=".MainActivity" />
+            android:name=".MainActivity"
+            android:windowSoftInputMode="adjustResize|adjustPan"
+            />
         <activity
             android:name=".Login.SplashScreen"
             android:exported="true">

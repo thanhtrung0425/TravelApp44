@@ -1,9 +1,13 @@
 package com.rajendra.vacationtourapp.Views;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -17,6 +21,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.rajendra.vacationtourapp.MainActivity;
 import com.rajendra.vacationtourapp.R;
 import com.rajendra.vacationtourapp.adapter.PlaceAdapter;
 import com.rajendra.vacationtourapp.model.PlaceModel;
@@ -29,6 +34,7 @@ public class PlaceFragment extends Fragment {
     private RecyclerView placeRecycler;
     private PlaceAdapter placeAdapter;
     private List<PlaceModel> placeItem;
+    private EditText txtSearch;
 
 
     @Nullable
@@ -42,25 +48,56 @@ public class PlaceFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         placeRecycler = getView().findViewById(R.id.place_recycler);
+        txtSearch = getActivity().findViewById(R.id.editTextSearch);
+        txtSearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                filterPlace(editable.toString());
+            }
+        });
+
         placeItem = new ArrayList<>();
+        getListPlaceFromDataBase();
         placeRecycler.setLayoutManager(new GridLayoutManager(getContext(), 2));
         placeAdapter = new PlaceAdapter(getContext(), placeItem);
         placeRecycler.setAdapter(placeAdapter);
-        getListPlaceFromDataBase();
+
+
+    }
+
+    private void filterPlace(String text) {
+        List<PlaceModel> filterList = new ArrayList<>();
+
+        for (PlaceModel item: placeItem){
+            if (item.getName_place().toLowerCase().contains(text.toLowerCase())){
+                filterList.add(item);
+            }
+        }
+        placeAdapter.filterListPlace(filterList);
     }
 
     private void getListPlaceFromDataBase(){
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("place");
+        DatabaseReference myRefPlace = database.getReference("place");
 
-        myRef.addValueEventListener(new ValueEventListener() {
+        myRefPlace.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()){
                     PlaceModel place = dataSnapshot.getValue(PlaceModel.class);
                     placeItem.add(place);
                 }
-                placeAdapter.notifyDataSetChanged();
+                placeAdapter.setDataPlace(placeItem);
             }
 
             @Override

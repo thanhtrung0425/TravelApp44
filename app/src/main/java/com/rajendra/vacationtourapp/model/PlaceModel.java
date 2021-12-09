@@ -2,60 +2,60 @@ package com.rajendra.vacationtourapp.model;
 
 public class PlaceModel {
 
-    private int id;
-    private String placeName;
-    private String addressName;
-    private String decreptions;
-    private Images imageUrl;
+    private int id_place;
+    private String name_place;
+    private String address_place;
+    private String decription;
+    private Images img_place;
 
-    public PlaceModel(int id, String placeName, String addressName, String decreptions, Images imageUrl) {
-        this.id = id;
-        this.placeName = placeName;
-        this.addressName = addressName;
-        this.decreptions = decreptions;
-        this.imageUrl = imageUrl;
+    public PlaceModel(int id_place, String name_place, String address_place, String decription, Images img_place) {
+        this.id_place = id_place;
+        this.name_place = name_place;
+        this.address_place = address_place;
+        this.decription = decription;
+        this.img_place = img_place;
     }
 
     public PlaceModel() {
     }
 
-    public int getId() {
-        return id;
+    public int getId_place() {
+        return id_place;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId_place(int id_place) {
+        this.id_place = id_place;
     }
 
-    public String getPlaceName() {
-        return placeName;
+    public String getName_place() {
+        return name_place;
     }
 
-    public void setPlaceName(String placeName) {
-        this.placeName = placeName;
+    public void setName_place(String name_place) {
+        this.name_place = name_place;
     }
 
-    public String getAddressName() {
-        return addressName;
+    public String getAddress_place() {
+        return address_place;
     }
 
-    public void setAddressName(String addressName) {
-        this.addressName = addressName;
+    public void setAddress_place(String address_place) {
+        this.address_place = address_place;
     }
 
-    public String getDecreptions() {
-        return decreptions;
+    public String getDecription() {
+        return decription;
     }
 
-    public void setDecreptions(String decreptions) {
-        this.decreptions = decreptions;
+    public void setDecription(String decription) {
+        this.decription = decription;
     }
 
-    public Images getImageUrl() {
-        return imageUrl;
+    public Images getImg_place() {
+        return img_place;
     }
 
-    public void setImageUrl(Images imageUrl) {
-        this.imageUrl = imageUrl;
+    public void setImg_place(Images img_place) {
+        this.img_place = img_place;
     }
 }

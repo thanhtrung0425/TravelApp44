@@ -90,8 +90,9 @@
     <FrameLayout
         android:id="@+id/framefragment"
         android:layout_width="match_parent"
-        android:layout_height="490dp"
-        android:layout_marginBottom="4dp"
+        android:layout_height="480dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginBottom="10dp"
         app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -99,13 +100,11 @@
 
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:background="@drawable/rounded"
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="44dp"
-        app:menu="@menu/navigation_bottom"
-        android:layout_marginTop="10dp"
+        android:background="@drawable/rounded"
         app:layout_constraintBottom_toBottomOf="parent"
-        />
+        app:menu="@menu/navigation_bottom" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
