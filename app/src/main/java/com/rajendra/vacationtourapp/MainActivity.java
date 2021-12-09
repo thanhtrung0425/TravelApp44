@@ -1,20 +1,14 @@
 package com.rajendra.vacationtourapp;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager.widget.ViewPager;
 
-import android.content.Intent;
-import android.graphics.Color;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.EditText;
-import android.widget.FrameLayout;
+
 import android.widget.TextView;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -25,15 +19,8 @@ import com.rajendra.vacationtourapp.Views.HotelFragment;
 import com.rajendra.vacationtourapp.Views.PlaceFragment;
 import com.rajendra.vacationtourapp.Views.ProfileFragment;
 import com.rajendra.vacationtourapp.adapter.PlaceAdapter;
-import com.rajendra.vacationtourapp.model.PlaceModel;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-
-    RecyclerView recentRecycler;
-    PlaceAdapter placeAdapter;
 
     private TextView txtAdd, txtPlace;
 
@@ -102,27 +89,5 @@ public class MainActivity extends AppCompatActivity {
                 .replace(R.id.framefragment, fragment)
                 .commit();
     }
-
-//
-//    private  void setPlaceRecycler(List<PlaceModel> placeModelList){
-//        recentRecycler = findViewById(R.id.recent_recycler);
-//        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(MainActivity.this, 2);
-//        recentRecycler.setLayoutManager(layoutManager);
-//        placeAdapter = new PlaceAdapter(this, placeModelList);
-//        recentRecycler.setAdapter(placeAdapter);
-//    }
-//
-//    private void ExData(){
-//        List<PlaceModel> placeModelList = new ArrayList<>();
-//        placeModelList.add(new PlaceModel("Kinh thành Huế","TP Huế","",R.drawable.img_hue));
-//        placeModelList.add(new PlaceModel("Bãi bụt", "Đà Nẵng","", R.drawable.img_baibut));
-//        placeModelList.add(new PlaceModel("Cầu rồng", "Đà Nẵng", "", R.drawable.img_caurong));
-//        placeModelList.add(new PlaceModel("Chùa thiên mụ", "TP Huế", "", R.drawable.img_chuathienmu));
-//        placeModelList.add(new PlaceModel("Cầu tràng tiền","TP Huế", "", R.drawable.img_cautrangtien));
-//        placeModelList.add(new PlaceModel("Đèo hải vân", "Đà Nẵng", "", R.drawable.img_deohaivan));
-//        placeModelList.add(new PlaceModel("Đỉnh bàn cờ", "Đà Nẵng", "", R.drawable.img_dinhbanco));
-//        setPlaceRecycler(placeModelList);
-//    }
-
 
 }

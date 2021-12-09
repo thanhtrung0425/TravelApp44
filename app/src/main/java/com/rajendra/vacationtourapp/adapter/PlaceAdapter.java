@@ -19,8 +19,8 @@ import java.util.List;
 
 public class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.PlaceViewHolder> {
 
-    Context context;
-    List<PlaceModel> placeModelList;
+    private Context context;
+    private List<PlaceModel> placeModelList;
 
     public PlaceAdapter(Context context, List<PlaceModel> placeModelList) {
         this.context = context;
@@ -31,7 +31,7 @@ public class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.PlaceViewHol
     @Override
     public PlaceViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View view = LayoutInflater.from(context).inflate(R.layout.recents_row_item, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.places_row_item, parent, false);
 
         // here we create a recyclerview row item layout file
         return new PlaceViewHolder(view);
@@ -42,8 +42,6 @@ public class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.PlaceViewHol
 
         holder.addressPlace.setText(placeModelList.get(position).getAddressName());
         holder.placeName.setText(placeModelList.get(position).getPlaceName());
-        holder.decreptions.setText(placeModelList.get(position).getDecreptions());
-        holder.placeImage.setImageResource(placeModelList.get(position).getImageUrl());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,8 +60,8 @@ public class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.PlaceViewHol
 
     public static final class PlaceViewHolder extends RecyclerView.ViewHolder{
 
-        ImageView placeImage;
-        TextView placeName, addressPlace, decreptions;
+        private ImageView placeImage;
+        private TextView placeName, addressPlace;
 
         public PlaceViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -71,8 +69,6 @@ public class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.PlaceViewHol
             placeImage = itemView.findViewById(R.id.place_image);
             placeName = itemView.findViewById(R.id.place_name);
             addressPlace = itemView.findViewById(R.id.address_place);
-            decreptions = itemView.findViewById(R.id.decreption_place);
-
         }
     }
 }

@@ -2,24 +2,29 @@ package com.rajendra.vacationtourapp.model;
 
 public class PlaceModel {
 
-    String placeName;
-    String addressName;
-    String decreptions;
-    Integer imageUrl;
+    private int id;
+    private String placeName;
+    private String addressName;
+    private String decreptions;
+    private Images imageUrl;
 
-    public Integer getImageUrl() {
-        return imageUrl;
-    }
-
-    public void setImageUrl(Integer imageUrl) {
-        this.imageUrl = imageUrl;
-    }
-
-    public PlaceModel(String placeName, String addressName, String decreptions, Integer imageUrl) {
+    public PlaceModel(int id, String placeName, String addressName, String decreptions, Images imageUrl) {
+        this.id = id;
         this.placeName = placeName;
         this.addressName = addressName;
         this.decreptions = decreptions;
         this.imageUrl = imageUrl;
+    }
+
+    public PlaceModel() {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getPlaceName() {
@@ -44,5 +49,13 @@ public class PlaceModel {
 
     public void setDecreptions(String decreptions) {
         this.decreptions = decreptions;
+    }
+
+    public Images getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(Images imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }
