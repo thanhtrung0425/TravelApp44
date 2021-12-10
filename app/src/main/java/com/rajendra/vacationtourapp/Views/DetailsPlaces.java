@@ -46,9 +46,6 @@ public class DetailsPlaces extends AppCompatActivity {
             getDetailPlaceByID(id);
         }
 
-
-
-
     }
 
     private void getDetailPlaceByID(int id) {
