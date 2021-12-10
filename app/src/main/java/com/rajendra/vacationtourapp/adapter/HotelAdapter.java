@@ -55,11 +55,14 @@ public class HotelAdapter extends RecyclerView.Adapter<HotelAdapter.HotelViewHol
         holder.hotelPrice.setText("Price: " + HotelModelList.get(position).getPrice() + "đ");
         Picasso.get().load(HotelModelList.get(position).getImg_hotel().getImg1()).into(holder.hotelImage);
 
+        int id = HotelModelList.get(position).getId_hotel();
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i=new Intent(hotelcontext, DetailsPlaces.class);
+                i.putExtra("keys", "hotel");
+                i.putExtra("id_item","" + id);
                 hotelcontext.startActivity(i);
             }
         });

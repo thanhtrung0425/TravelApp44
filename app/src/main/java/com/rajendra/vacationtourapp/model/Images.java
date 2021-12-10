@@ -6,7 +6,6 @@ public class Images {
     private String img2;
     private String img3;
 
-
     public Images(String img1, String img2, String img3) {
         this.img1 = img1;
         this.img2 = img2;

@@ -58,7 +58,8 @@ public class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.PlaceViewHol
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(context, DetailsPlaces.class);
-                i.putExtra("id_place", "" + id );
+                i.putExtra("keys", "place");
+                i.putExtra("id_item", "" + id );
                 context.startActivity(i);
             }
         });

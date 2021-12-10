@@ -4,13 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/home_bg"
     tools:context=".Login.SplashScreen">
 
     <ImageView
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="230dp"
+        android:layout_height="230dp"
         android:layout_centerInParent="true"
-        android:src="@drawable/ic_baseline_travel_explore_24"></ImageView>
+        android:src="@drawable/logo_firebase"></ImageView>
 
 
     <TextView
@@ -19,21 +20,21 @@
         android:layout_above="@+id/maintext"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="5dp"
-        android:textSize="15sp"
         android:text="from"
-        android:textColor="#1E1D1D"></TextView>
+        android:textColor="#F4FF81"
+        android:textSize="15sp"></TextView>
 
     <TextView
+        android:id="@+id/maintext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="THKPQ ENTERTAINMENT"
         android:layout_alignParentBottom="true"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:id="@+id/maintext"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="30dp"
-        android:textColor="#0000FF"></TextView>
+        android:text="THKPQ ENTERTAINMENT"
+        android:textColor="#FFE57F"
+        android:textSize="20sp"
+        android:textStyle="bold"></TextView>
 
 
 </RelativeLayout>
