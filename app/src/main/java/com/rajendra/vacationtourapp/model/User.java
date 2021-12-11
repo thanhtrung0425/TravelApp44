@@ -1,5 +1,7 @@
 package com.rajendra.vacationtourapp.model;
 
+import android.net.Uri;
+
 public class User {
 
     private String user_name;
@@ -7,13 +9,16 @@ public class User {
     private String password;
     private String country;
     private String phone;
+    private String img_avatar;
 
-    public User(String user_name, String email, String password, String country, String phone) {
+
+    public User(String user_name, String email, String password, String country, String phone, String img_avatar) {
         this.user_name = user_name;
         this.email = email;
         this.password = password;
         this.country = country;
         this.phone = phone;
+        this.img_avatar = img_avatar;
     }
 
     public User() {
@@ -57,5 +62,14 @@ public class User {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+
+    public String getImg_avatar() {
+        return img_avatar;
+    }
+
+    public void setImg_avatar(String img_avatar) {
+        this.img_avatar = img_avatar;
     }
 }
