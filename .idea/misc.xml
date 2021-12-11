@@ -29,6 +29,8 @@
         <entry key="app/src/main/res/layout/activity_splash_screen.xml" value="0.3038949275362319" />
         <entry key="app/src/main/res/layout/bo_tron_goc_button.xml" value="0.3038949275362319" />
         <entry key="app/src/main/res/layout/favorite_fragment.xml" value="0.3038949275362319" />
+        <entry key="app/src/main/res/layout/food_fragment.xml" value="0.2921195652173913" />
+        <entry key="app/src/main/res/layout/food_row_item.xml" value="0.536" />
         <entry key="app/src/main/res/layout/hotel_fragment.xml" value="0.315625" />
         <entry key="app/src/main/res/layout/hotels_row_item.xml" value="0.4" />
         <entry key="app/src/main/res/layout/item_images.xml" value="0.30932971014492755" />

@@ -4,25 +4,19 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.rajendra.vacationtourapp.ViewModels.SoftInputAssist;
-import com.rajendra.vacationtourapp.Views.FavoriteFragment;
+import com.rajendra.vacationtourapp.Views.FoodFragment;
 import com.rajendra.vacationtourapp.Views.HotelFragment;
 import com.rajendra.vacationtourapp.Views.PlaceFragment;
 import com.rajendra.vacationtourapp.Views.ProfileActivity;
-import com.rajendra.vacationtourapp.Views.ProfileFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -40,11 +34,9 @@ public class MainActivity extends AppCompatActivity {
         txtAdd = findViewById(R.id.addPlace);
         imgProfile = findViewById(R.id.imgProfile);
 
-
         Intent getLogin = getIntent();
         if (getLogin != null){
              getEmail= getLogin.getStringExtra("email");
-             txtAdd.setText("" + getEmail);
         }
 
 
@@ -77,24 +69,19 @@ public class MainActivity extends AppCompatActivity {
             Fragment fragment = null;
             switch (item.getItemId())
             {
-                case R.id.home:
-                    txtPlace.setText("PLACE");
-                    fragment = new PlaceFragment();
-                    loadFragment(fragment);
-                    break;
                 case R.id.hotel:
                     txtPlace.setText("HOTEL");
                     fragment = new HotelFragment();
                     loadFragment(fragment);
                     break;
-                case R.id.favorite:
-                    txtPlace.setText("FAVORITE");
-                    fragment = new FavoriteFragment();
+                case R.id.home:
+                    txtPlace.setText("PLACE");
+                    fragment = new PlaceFragment();
                     loadFragment(fragment);
                     break;
-                case R.id.profile:
-                    txtPlace.setText("PROFILE");
-                    fragment = new ProfileFragment();
+                case R.id.food:
+                    txtPlace.setText("FOOD");
+                    fragment = new FoodFragment();
                     loadFragment(fragment);
                     break;
             }

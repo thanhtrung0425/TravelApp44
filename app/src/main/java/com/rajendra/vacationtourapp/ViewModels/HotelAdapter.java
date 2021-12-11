@@ -86,10 +86,10 @@ public class HotelAdapter extends RecyclerView.Adapter<HotelAdapter.HotelViewHol
         public HotelViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            hotelImage = itemView.findViewById(R.id.hotel_image);
-            hotelName = itemView.findViewById(R.id.hotel_name);
-            addressHotel = itemView.findViewById(R.id.address_hotel);
-            hotelPrice = itemView.findViewById(R.id.price_hotel);
+            hotelImage = itemView.findViewById(R.id.food_image);
+            hotelName = itemView.findViewById(R.id.food_name);
+            addressHotel = itemView.findViewById(R.id.food_address);
+            hotelPrice = itemView.findViewById(R.id.food_price);
         }
     }
 }
