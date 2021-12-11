@@ -28,7 +28,7 @@
         android:layout_height="50dp"
         android:layout_below="@+id/logo"
         android:layout_centerHorizontal="true"
-        android:hint="Số điện thoại hoăc email"
+        android:hint="Phone number or email"
         android:inputType="textLongMessage"
         android:textColor="#000000"></EditText>
 
@@ -38,8 +38,8 @@
         android:layout_height="50dp"
         android:layout_below="@+id/edtAccount"
         android:layout_centerHorizontal="true"
-        android:hint="Mật khẩu"
-        android:inputType="textPassword|textLongMessage"
+        android:hint="Password"
+        android:inputType="textPassword"
         android:textColor="#000000"></EditText>
 
     <Button
@@ -51,7 +51,7 @@
         android:layout_marginTop="10dp"
         android:background="@drawable/roundedbutton"
         android:elevation="10dp"
-        android:text="Đăng nhập"
+        android:text="Login"
         android:textSize="15sp"></Button>
 
     <TextView
@@ -91,7 +91,7 @@
         android:layout_marginTop="10dp"
         android:background="@drawable/roundedbutton"
         android:elevation="10dp"
-        android:text="Đăng ký"
+        android:text="Register"
         android:textSize="15sp"></Button>
 
 
@@ -106,16 +106,16 @@
         android:textColor="#1E1D1D"></TextView>
 
     <TextView
+        android:id="@+id/maintext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="THKPQ ENTERTAINMENT"
         android:layout_alignParentBottom="true"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:id="@+id/maintext"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="30dp"
-        android:textColor="#0000FF"></TextView>
+        android:text="THKPQ ENTERTAINMENT"
+        android:textColor="#F4A460"
+        android:textSize="20sp"
+        android:textStyle="bold"></TextView>
 
 
 </RelativeLayout>

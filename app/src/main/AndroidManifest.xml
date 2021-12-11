@@ -5,7 +5,6 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -14,15 +13,20 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".Views.ProfileActivity"
+            android:exported="true" />
+        <activity
+            android:name=".Views.RegisterActivity"
+            android:exported="true" />
+        <activity
             android:name=".Login.LoginScreen"
             android:exported="true" />
         <activity
             android:name=".Views.DetailsPlaces"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
-            android:windowSoftInputMode="adjustResize|adjustPan"
-            />
+            android:windowSoftInputMode="adjustResize|adjustPan" />
         <activity
             android:name=".Login.SplashScreen"
             android:exported="true">

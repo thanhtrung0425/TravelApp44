@@ -2,17 +2,13 @@ package com.rajendra.vacationtourapp.Views;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.view.menu.MenuBuilder;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.method.LinkMovementMethod;
-import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -22,9 +18,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.rajendra.vacationtourapp.MainActivity;
 import com.rajendra.vacationtourapp.R;
-import com.rajendra.vacationtourapp.adapter.ImagesAdapter;
+import com.rajendra.vacationtourapp.ViewModels.ImagesAdapter;
 import com.rajendra.vacationtourapp.model.HotelModel;
-import com.rajendra.vacationtourapp.model.Images;
 import com.rajendra.vacationtourapp.model.Photos;
 import com.rajendra.vacationtourapp.model.PlaceModel;
 import com.squareup.picasso.Picasso;
@@ -91,7 +86,7 @@ public class DetailsPlaces extends AppCompatActivity {
                     else if (keys.equals("hotel")){
                         List<HotelModel> hotelItem = new ArrayList<>();
                         for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                            Log.e("onDataChangeDetails", dataSnapshot.getValue().toString());
+//                            Log.e("onDataChangeDetails", dataSnapshot.getValue().toString());
                             HotelModel hotel = dataSnapshot.getValue(HotelModel.class);
                             hotelItem.add(hotel);
                         }

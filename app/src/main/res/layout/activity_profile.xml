@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Views.ProfileActivity">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@drawable/home_bg"
+        tools:ignore="MissingConstraints">
+
+        <TextView
+            android:id="@+id/txtUsername"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="60dp"
+            android:text="Cao Thanh Trung"
+            android:textColor="#ffff"
+            android:textSize="27sp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+
+    <ImageView
+        android:id="@+id/imgBackFromProfile"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_arrow_back_black_24dp" />
+
+
+    <ImageView
+        android:id="@+id/pic_imageview"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="120dp"
+        app:srcCompat="@drawable/boy_avatar" />
+
+    <TextView
+        android:id="@+id/textCountry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/pic_imageview"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:text="Việt Nam"
+        android:textColor="#000010"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+
+    <ImageView
+        android:id="@+id/iconmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textCountry"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="25dp"
+        android:src="@drawable/ic_mail_black_24dp" />
+
+    <TextView
+        android:id="@+id/txtEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textCountry"
+        android:layout_marginLeft="90dp"
+        android:layout_marginTop="25dp"
+        android:text="Thanhtrung250301@gmail.com"
+        android:textSize="17sp" />
+
+    <ImageView
+        android:id="@+id/iconphone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/iconmail"
+        android:src="@drawable/ic_local_phone_black_24dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="50dp"/>
+
+    <TextView
+        android:id="@+id/txtPhone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtEmail"
+        android:layout_marginLeft="90dp"
+        android:layout_marginTop="20dp"
+        android:text="0949120960"
+        android:textSize="17sp" />
+
+    <Button
+        android:id="@+id/btnLogout"
+        android:layout_width="270dp"
+        android:layout_height="50dp"
+        android:onClick="logout"
+        android:layout_below="@+id/pic_imageview"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="350dp"
+        android:background="@drawable/roundedbutton"
+        android:elevation="10dp"
+        android:text="LOGOUT"
+        android:textSize="15sp"></Button>
+
+
+</RelativeLayout>

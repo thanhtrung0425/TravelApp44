@@ -4,17 +4,14 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.MenuItem;
 
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -24,17 +21,14 @@ import com.rajendra.vacationtourapp.ViewModels.SoftInputAssist;
 import com.rajendra.vacationtourapp.Views.FavoriteFragment;
 import com.rajendra.vacationtourapp.Views.HotelFragment;
 import com.rajendra.vacationtourapp.Views.PlaceFragment;
+import com.rajendra.vacationtourapp.Views.ProfileActivity;
 import com.rajendra.vacationtourapp.Views.ProfileFragment;
-import com.rajendra.vacationtourapp.adapter.PlaceAdapter;
-import com.rajendra.vacationtourapp.model.PlaceModel;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     private TextView txtAdd, txtPlace;
-    private SoftInputAssist softInputAssist;
+    private ImageView imgProfile;
+    private String getEmail;
 
 
     @Override
@@ -44,8 +38,25 @@ public class MainActivity extends AppCompatActivity {
 
         txtPlace = findViewById(R.id.txtPlace);
         txtAdd = findViewById(R.id.addPlace);
+        imgProfile = findViewById(R.id.imgProfile);
 
-        checkAdmin();
+
+        Intent getLogin = getIntent();
+        if (getLogin != null){
+             getEmail= getLogin.getStringExtra("email");
+             txtAdd.setText("" + getEmail);
+        }
+
+
+        imgProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent toProfile = new Intent(MainActivity.this, ProfileActivity.class);
+                toProfile.putExtra("email", getEmail);
+                startActivity(toProfile);
+            }
+        });
+
 
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.framefragment, new PlaceFragment())
@@ -53,6 +64,8 @@ public class MainActivity extends AppCompatActivity {
 
         BottomNavigationView navigationView = findViewById(R.id.bottom_navigation);
         navigationView.setOnNavigationItemSelectedListener(navListener);
+
+
     }
 
 
@@ -89,25 +102,10 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
-    private void checkAdmin() {
-        GoogleSignInAccount googleSignInAccountAdmin = GoogleSignIn.getLastSignedInAccount(this);
-        if (googleSignInAccountAdmin != null) {
-            if (googleSignInAccountAdmin.getEmail().trim().equals("thanhtrung250301@gmail.com"))
-                txtAdd.setText("+");
-        }
-    }
-
     private void loadFragment(Fragment fragment){
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.framefragment, fragment)
                 .commit();
-    }
-
-    public void showSoftKeyboard(View view) {
-        if (view.requestFocus()) {
-            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-            imm.showSoftInput(view, InputMethodManager.SHOW_IMPLICIT);
-        }
     }
 
 }

@@ -1,4 +1,4 @@
-package com.rajendra.vacationtourapp.adapter;
+package com.rajendra.vacationtourapp.ViewModels;
 
 import android.content.Context;
 import android.view.LayoutInflater;

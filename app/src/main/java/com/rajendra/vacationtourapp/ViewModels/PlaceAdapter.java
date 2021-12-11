@@ -1,6 +1,5 @@
-package com.rajendra.vacationtourapp.adapter;
+package com.rajendra.vacationtourapp.ViewModels;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;

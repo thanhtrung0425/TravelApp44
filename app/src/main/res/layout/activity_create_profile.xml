@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Views.RegisterActivity"
+    android:background="#E0FFFF">
+
+
+    <TextView
+        android:id="@+id/txtcreate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="70dp"
+        android:text="Create an account"
+        android:textColor="#363232"
+        android:textSize="35sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/edtUserName"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:layout_below="@+id/txtcreate"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/roundededt"
+        android:hint="Username"
+        android:paddingLeft="15dp"
+        android:textSize="19sp" />
+
+    <EditText
+        android:id="@+id/edtEmail"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/edtUserName"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/roundededt"
+        android:hint="Email"
+        android:paddingLeft="15dp"
+        android:textSize="19sp" />
+
+    <EditText
+        android:id="@+id/edtCrPass"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/edtEmail"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/roundededt"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:paddingLeft="15dp"
+        android:textSize="19sp" />
+
+    <EditText
+        android:id="@+id/edtComfirmPass"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/edtCrPass"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/roundededt"
+        android:hint="Confirm Password"
+        android:inputType="textPassword"
+        android:paddingLeft="15dp"
+        android:textSize="19sp" />
+
+    <EditText
+        android:id="@+id/edtCountry"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/edtComfirmPass"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/roundededt"
+        android:hint="Country"
+        android:paddingLeft="15dp"
+        android:textSize="19sp" />
+
+    <EditText
+        android:id="@+id/edtPhoneNumber"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/edtCountry"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/roundededt"
+        android:hint="Phone Number"
+        android:paddingLeft="15dp"
+        android:textSize="19sp" />
+
+    <Button
+        android:id="@+id/btnCrRegister"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/edtPhoneNumber"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/roundedbutton"
+        android:elevation="10dp"
+        android:text="Register"
+        android:textSize="15sp"></Button>
+
+
+</RelativeLayout>

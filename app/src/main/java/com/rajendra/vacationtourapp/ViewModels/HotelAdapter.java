@@ -1,4 +1,4 @@
-package com.rajendra.vacationtourapp.adapter;
+package com.rajendra.vacationtourapp.ViewModels;
 
 import android.content.Context;
 
@@ -16,7 +16,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.rajendra.vacationtourapp.R;
 import com.rajendra.vacationtourapp.Views.DetailsPlaces;
 import com.rajendra.vacationtourapp.model.HotelModel;
-import com.rajendra.vacationtourapp.model.PlaceModel;
 import com.squareup.picasso.Picasso;
 
 
