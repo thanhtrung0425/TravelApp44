@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Views.ReviewActivity">
+    <include layout="@layout/toolbar_review"
+        android:id="@+id/toolbarRv"/>
+
+    <TextView
+        android:id="@+id/txtRate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbarRv"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="4.4"
+        android:textColor="#000010"
+        android:textSize="55sp" />
+
+    <TextView
+        android:id="@+id/txtVote"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtRate"
+        android:layout_centerHorizontal="true"
+        android:text="based on 20 reviews"
+        android:textSize="14dp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_review"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/txtVote"
+        android:layout_marginTop="30dp"
+        />
+
+
+
+</RelativeLayout>

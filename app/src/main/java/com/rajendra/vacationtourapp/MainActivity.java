@@ -13,6 +13,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.rajendra.vacationtourapp.Views.DetailsPlaces;
 import com.rajendra.vacationtourapp.Views.FoodFragment;
 import com.rajendra.vacationtourapp.Views.HotelFragment;
 import com.rajendra.vacationtourapp.Views.PlaceFragment;
@@ -23,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
     private TextView txtAdd, txtPlace;
     private ImageView imgProfile;
     private String getEmail;
+    private FirebaseUser firebaseUser;
+
 
 
     @Override
@@ -34,17 +39,18 @@ public class MainActivity extends AppCompatActivity {
         txtAdd = findViewById(R.id.addPlace);
         imgProfile = findViewById(R.id.imgProfile);
 
-        Intent getLogin = getIntent();
-        if (getLogin != null){
-             getEmail= getLogin.getStringExtra("email");
-        }
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        getEmail = firebaseUser.getEmail();
+        txtAdd.setText(getEmail);
+
 
 
         imgProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent toProfile = new Intent(MainActivity.this, ProfileActivity.class);
-                toProfile.putExtra("email", getEmail);
+                toProfile.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                //toProfile.putExtra("email", getEmail);
                 startActivity(toProfile);
             }
         });

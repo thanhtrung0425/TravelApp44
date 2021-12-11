@@ -34,7 +34,6 @@ public class RegisterActivity extends AppCompatActivity {
     private FirebaseDatabase database;
     private DatabaseReference mDatabase;
     private  static final String USER = "user";
-    private String username, fname, email, phone, country, password;
     private User users;
 
     @Override
@@ -98,11 +97,10 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     public void updateUI(FirebaseUser currentUser, String getEmail) {
-        String keyid = mDatabase.push().getKey();
         mDatabase.child("" + getEmail).setValue(users); //adding user info to database
         Log.e("DATA", currentUser.getUid());
         Intent loginIntent = new Intent(this, MainActivity.class);
-        loginIntent.putExtra("email", currentUser.getEmail());
+        loginIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(loginIntent);
     }
 

@@ -60,6 +60,7 @@ public class HotelAdapter extends RecyclerView.Adapter<HotelAdapter.HotelViewHol
             @Override
             public void onClick(View view) {
                 Intent i=new Intent(hotelcontext, DetailsPlaces.class);
+                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 i.putExtra("keys", "hotel");
                 i.putExtra("id_item","" + id);
                 hotelcontext.startActivity(i);

@@ -69,7 +69,6 @@ public class LoginScreen extends AppCompatActivity {
                             public void onSuccess(AuthResult authResult) {
                                 Intent loginIntent = new Intent(LoginScreen.this, MainActivity.class);
                                 loginIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                loginIntent.putExtra("email", getEmail);
                                 startActivity(loginIntent);
                                 Toast.makeText(LoginScreen.this, "Login success!", Toast.LENGTH_SHORT).show();
                             }

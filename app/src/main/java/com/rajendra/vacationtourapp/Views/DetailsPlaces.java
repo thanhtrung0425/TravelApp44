@@ -37,6 +37,7 @@ public class DetailsPlaces extends AppCompatActivity {
     private CircleIndicator circleIndicator;
     private ImagesAdapter imagesAdapter;
     private List<Photos> imagesList;
+    private String userEmail;
 
 
     @Override
@@ -48,6 +49,7 @@ public class DetailsPlaces extends AppCompatActivity {
 
         Bundle getPlace = getIntent().getExtras();
         if (getPlace != null){
+            userEmail = getPlace.getString("email");
             String keys = getPlace.getString("keys");
             String id_data = getPlace.getString("id_item");
             int id = Integer.parseInt(id_data);
@@ -86,7 +88,6 @@ public class DetailsPlaces extends AppCompatActivity {
                     else if (keys.equals("hotel")){
                         List<HotelModel> hotelItem = new ArrayList<>();
                         for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-//                            Log.e("onDataChangeDetails", dataSnapshot.getValue().toString());
                             HotelModel hotel = dataSnapshot.getValue(HotelModel.class);
                             hotelItem.add(hotel);
                         }
@@ -128,7 +129,8 @@ public class DetailsPlaces extends AppCompatActivity {
         imgBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(DetailsPlaces.this, MainActivity.class));
+                Intent intent = new Intent(DetailsPlaces.this, MainActivity.class);
+                startActivity(intent);
             }
         });
 

@@ -65,6 +65,8 @@ public class ProfileActivity extends AppCompatActivity {
     private FirebaseStorage mFirestorage;
     private StorageReference mStoreRef;
 
+    private FirebaseUser firebaseUser;
+
 
 
 
@@ -81,8 +83,8 @@ public class ProfileActivity extends AppCompatActivity {
         imgBackFromProfile = findViewById(R.id.imgBackFromProfile);
         imgAvatar = findViewById(R.id.imgAvatar);
 
-        Intent getProfile = getIntent();
-        emailUser = getProfile.getStringExtra("email");
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        emailUser = firebaseUser.getEmail();
 
         mFirestorage = FirebaseStorage.getInstance();
         mStoreRef = mFirestorage.getReference("ImageFolder/");
@@ -110,7 +112,8 @@ public class ProfileActivity extends AppCompatActivity {
                 txtCountry.setText(country);
                 txtEmail.setText(email);
                 txtPhone.setText(phone);
-                Picasso.get().load(avatar).into(imgAvatar);
+                if (!avatar.equals(""))
+                    Picasso.get().load(avatar).into(imgAvatar);
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
@@ -122,8 +125,7 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent toMainIntent = new Intent(ProfileActivity.this, MainActivity.class);
-                toMainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                toMainIntent.putExtra("email", emailUser);
+                toMainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(toMainIntent);
             }
         });
