@@ -55,7 +55,7 @@ public class ProfileActivity extends AppCompatActivity {
 
     private TextView txtnameuser, txtCountry, txtEmail, txtPhone;
     private ImageView imgBackFromProfile, imgAvatar;
-    private Button btnLogout;
+    private Button btnLogout, btnAddPlace, btnAddHotel, btnAddFood;
     private String emailUser;
 
 
@@ -75,16 +75,11 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
-        txtnameuser = findViewById(R.id.txtUsername);
-        txtCountry = findViewById(R.id.textCountry);
-        txtEmail = findViewById(R.id.txtEmail);
-        txtPhone = findViewById(R.id.txtPhone);
-        btnLogout = findViewById(R.id.btnLogout);
-        imgBackFromProfile = findViewById(R.id.imgBackFromProfile);
-        imgAvatar = findViewById(R.id.imgAvatar);
+        setFindViewByID();
 
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         emailUser = firebaseUser.getEmail();
+        CheckAdmin(emailUser);
 
         mFirestorage = FirebaseStorage.getInstance();
         mStoreRef = mFirestorage.getReference("ImageFolder/");
@@ -151,7 +146,6 @@ public class ProfileActivity extends AppCompatActivity {
         if (requestCode == 1 && resultCode == RESULT_OK
                 && data != null && data.getData() != null) {
             Uri imgUri = data.getData();
-            //Picasso.get().load(imgUri).into(imgAvatar);
             uploadPicture(imgUri);
         }
     }
@@ -226,6 +220,55 @@ public class ProfileActivity extends AppCompatActivity {
         logoutIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(logoutIntent);
         finish();
+    }
+
+    private void setFindViewByID(){
+        txtnameuser = findViewById(R.id.txtUsername);
+        txtCountry = findViewById(R.id.textCountry);
+        txtEmail = findViewById(R.id.txtEmail);
+        txtPhone = findViewById(R.id.txtPhone);
+        btnLogout = findViewById(R.id.btnLogout);
+        imgBackFromProfile = findViewById(R.id.imgBackFromProfile);
+        imgAvatar = findViewById(R.id.imgAvatar);
+
+        btnAddPlace = findViewById(R.id.btnAddPlace);
+        btnAddPlace.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ProfileActivity.this, AddDataActivity.class);
+                intent.putExtra("key", "place");
+                startActivity(intent);
+            }
+        });
+        btnAddHotel = findViewById(R.id.btnAddHotel);
+        btnAddHotel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ProfileActivity.this, AddDataActivity.class);
+                intent.putExtra("key", "hotel");
+                startActivity(intent);
+            }
+        });
+        btnAddFood = findViewById(R.id.btnAddFood);
+        btnAddFood.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ProfileActivity.this, AddFoodActivity.class);
+                intent.putExtra("key", "food");
+                startActivity(intent);
+            }
+        });
+
+    }
+
+
+    private void CheckAdmin(String email){
+
+        if (email.equals("admin@gmail.com")){
+            btnAddPlace.setVisibility(View.VISIBLE);
+            btnAddHotel.setVisibility(View.VISIBLE);
+            btnAddFood.setVisibility(View.VISIBLE);
+        }
     }
     
 

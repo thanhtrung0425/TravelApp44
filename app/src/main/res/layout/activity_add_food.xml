@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E0FFFF"
+    android:id="@+id/addDataActivity"
+    tools:context=".Views.AddFoodActivity">
+
+    <TextView
+        android:id="@+id/txtaddfood"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:text="Add food to database"
+        android:textSize="25dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvID"
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:layout_below="@+id/txtaddfood"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="28dp"
+        android:gravity="start"
+        android:paddingStart="5dp"
+        android:text="ID ITEM"
+        android:textSize="15sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/FedtInsertId"
+        android:layout_width="244dp"
+        android:layout_height="35dp"
+        android:layout_below="@+id/txtaddfood"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_toRightOf="@+id/tvID"
+        android:background="@drawable/roundededt"
+        android:inputType="textLongMessage|number"
+        android:paddingStart="5dp"
+        android:textColor="#000000"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:layout_below="@+id/tvID"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="35dp"
+        android:gravity="start"
+        android:paddingStart="5dp"
+        android:text="NAME ITEM"
+        android:textSize="15sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/FedtInsertname"
+        android:layout_width="244dp"
+        android:layout_height="35dp"
+        android:layout_below="@+id/FedtInsertId"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_toRightOf="@+id/tvName"
+        android:background="@drawable/roundededt"
+        android:inputType="textLongMessage"
+        android:paddingStart="5dp"
+        android:textColor="#000000"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/tvAddresss"
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:layout_below="@+id/tvName"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="35dp"
+        android:gravity="start"
+        android:paddingStart="5dp"
+        android:text="ADDRESS"
+        android:textSize="15sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/FedtInsertAddress"
+        android:layout_width="244dp"
+        android:layout_height="35dp"
+        android:layout_below="@+id/FedtInsertname"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_toRightOf="@+id/tvName"
+        android:background="@drawable/roundededt"
+        android:inputType="textLongMessage"
+        android:paddingStart="5dp"
+        android:textColor="#000000"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/tvInsertImage"
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:layout_below="@+id/tvAddresss"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="35dp"
+        android:gravity="start"
+        android:paddingStart="5dp"
+        android:text="IMAGE"
+        android:textSize="15sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/FedtInsertImage1"
+        android:layout_width="244dp"
+        android:layout_height="35dp"
+        android:layout_below="@+id/FedtInsertAddress"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_toRightOf="@+id/tvName"
+        android:background="@drawable/roundededt"
+        android:hint="image 1"
+        android:inputType="textLongMessage"
+        android:paddingStart="5dp"
+        android:textColor="#000000"
+        android:textSize="15sp" />
+
+
+    <TextView
+        android:id="@+id/tvDecription"
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:layout_below="@+id/tvInsertImage"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="35dp"
+        android:gravity="start"
+        android:paddingStart="5dp"
+        android:text="PRICE"
+        android:textSize="15sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/FedtInsertPrice"
+        android:layout_width="244dp"
+        android:layout_height="35dp"
+        android:layout_below="@+id/FedtInsertImage1"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_toRightOf="@+id/tvName"
+        android:background="@drawable/roundededt"
+        android:inputType="textLongMessage|number"
+        android:paddingStart="5dp"
+        android:textColor="#000000"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/tvLocation"
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:layout_below="@+id/tvDecription"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="35dp"
+        android:gravity="start"
+        android:paddingStart="0dp"
+        android:text="RATE"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/FedtInsertRate"
+        android:layout_width="244dp"
+        android:layout_height="35dp"
+        android:layout_below="@+id/FedtInsertPrice"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_toRightOf="@+id/tvName"
+        android:background="@drawable/roundededt"
+        android:hint="Latitude"
+        android:inputType="numberDecimal"
+        android:paddingStart="5dp"
+        android:textColor="#000000"
+        android:textSize="15sp" />
+
+
+    <Button
+        android:id="@+id/FbtnInsert"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/roundedbutton"
+        android:text="Insert" />
+
+</RelativeLayout>

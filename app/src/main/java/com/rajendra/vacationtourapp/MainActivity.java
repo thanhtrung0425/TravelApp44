@@ -50,14 +50,12 @@ public class MainActivity extends AppCompatActivity {
 
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         getEmail = firebaseUser.getEmail();
-        CheckAdmin(getEmail);
 
 
         imgProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent toProfile = new Intent(MainActivity.this, ProfileActivity.class);
-                toProfile.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(toProfile);
             }
         });
@@ -108,9 +106,4 @@ public class MainActivity extends AppCompatActivity {
                 .commit();
     }
 
-    private void CheckAdmin(String emailCheck){
-        if (emailCheck.equals("admin@gmail.com")){
-            txtAdd.setText("+");
-        }
-    }
 }

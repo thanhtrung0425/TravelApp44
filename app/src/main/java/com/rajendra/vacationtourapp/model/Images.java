@@ -12,6 +12,10 @@ public class Images {
         this.img3 = img3;
     }
 
+    public Images(String img1) {
+        this.img1 = img1;
+    }
+
     public Images() {
     }
 
