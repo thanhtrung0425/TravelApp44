@@ -25,7 +25,7 @@
             android:name=".Login.LoginScreen"
             android:exported="true" />
         <activity
-            android:name=".Views.DetailsPlaces"
+            android:name=".Views.DetailsActivity"
             android:exported="true" />
         <activity
             android:name=".MainActivity"

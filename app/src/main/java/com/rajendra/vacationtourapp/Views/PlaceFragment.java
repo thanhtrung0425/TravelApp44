@@ -77,7 +77,7 @@ public class PlaceFragment extends Fragment {
         List<PlaceModel> filterList = new ArrayList<>();
 
         for (PlaceModel item: placeItem){
-            if (item.getName_place().toLowerCase().contains(text.toLowerCase())){
+            if (item.getAddress_place().toLowerCase().contains(text.toLowerCase())){
                 filterList.add(item);
             }
         }

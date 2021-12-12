@@ -14,7 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.rajendra.vacationtourapp.R;
-import com.rajendra.vacationtourapp.Views.DetailsPlaces;
+import com.rajendra.vacationtourapp.Views.DetailsActivity;
 import com.rajendra.vacationtourapp.model.HotelModel;
 import com.squareup.picasso.Picasso;
 
@@ -59,8 +59,7 @@ public class HotelAdapter extends RecyclerView.Adapter<HotelAdapter.HotelViewHol
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i=new Intent(hotelcontext, DetailsPlaces.class);
-                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                Intent i=new Intent(hotelcontext, DetailsActivity.class);
                 i.putExtra("keys", "hotel");
                 i.putExtra("id_item","" + id);
                 hotelcontext.startActivity(i);

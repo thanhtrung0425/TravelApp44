@@ -7,16 +7,14 @@ public class FoodModel {
     private String address_food;
     private Images img_food;
     private int price;
-    private Review review;
     private String rate;
 
-    public FoodModel(int id_food, String name_food, String address_food, Images img_food, int price, Review review, String rate) {
+    public FoodModel(int id_food, String name_food, String address_food, Images img_food, int price, String rate) {
         this.id_food = id_food;
         this.name_food = name_food;
         this.address_food = address_food;
         this.img_food = img_food;
         this.price = price;
-        this.review = review;
         this.rate = rate;
     }
 
@@ -71,11 +69,4 @@ public class FoodModel {
         this.price = price;
     }
 
-    public Review getReview() {
-        return review;
-    }
-
-    public void setReview(Review review) {
-        this.review = review;
-    }
 }

@@ -7,13 +7,15 @@ public class PlaceModel {
     private String address_place;
     private String decription;
     private Images img_place;
+    private Location location;
 
-    public PlaceModel(int id_place, String name_place, String address_place, String decription, Images img_place) {
+    public PlaceModel(int id_place, String name_place, String address_place, String decription, Images img_place, Location location) {
         this.id_place = id_place;
         this.name_place = name_place;
         this.address_place = address_place;
         this.decription = decription;
         this.img_place = img_place;
+        this.location = location;
     }
 
     public PlaceModel() {
@@ -57,5 +59,13 @@ public class PlaceModel {
 
     public void setImg_place(Images img_place) {
         this.img_place = img_place;
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
     }
 }

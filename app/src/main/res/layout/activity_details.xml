@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:id="@+id/ScrollDetails"
     android:scrollbars="vertical"
-    tools:context=".Views.DetailsPlaces">
+    tools:context=".Views.DetailsActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -29,7 +29,6 @@
             android:layout_height="25dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_arrow_back_black_24dp" />
@@ -152,7 +151,6 @@
             android:textColor="#000000"
             android:justificationMode="inter_word"
             android:textSize="15sp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/textView2"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/textView2"
@@ -171,7 +169,19 @@
             app:layout_constraintHorizontal_bias="0.111"
             app:layout_constraintStart_toStartOf="@+id/textView12"
             app:layout_constraintTop_toBottomOf="@+id/image_1" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
+        <Button
+            android:id="@+id/btnFindLocation"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:text="Find location here"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/roundedbutton"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/txt_decreptionPlace"
+            app:layout_constraintStart_toStartOf="@+id/txt_decreptionPlace"
+            app:layout_constraintTop_toBottomOf="@+id/txt_decreptionPlace" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>

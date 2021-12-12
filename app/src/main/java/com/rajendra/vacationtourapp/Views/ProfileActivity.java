@@ -124,9 +124,7 @@ public class ProfileActivity extends AppCompatActivity {
         imgBackFromProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent toMainIntent = new Intent(ProfileActivity.this, MainActivity.class);
-                toMainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                startActivity(toMainIntent);
+                finish();
             }
         });
 

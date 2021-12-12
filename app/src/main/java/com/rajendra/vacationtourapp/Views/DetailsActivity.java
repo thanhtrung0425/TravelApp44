@@ -4,7 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -16,7 +15,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.rajendra.vacationtourapp.MainActivity;
 import com.rajendra.vacationtourapp.R;
 import com.rajendra.vacationtourapp.ViewModels.ImagesAdapter;
 import com.rajendra.vacationtourapp.model.HotelModel;
@@ -29,7 +27,7 @@ import java.util.List;
 
 import me.relex.circleindicator.CircleIndicator;
 
-public class DetailsPlaces extends AppCompatActivity {
+public class DetailsActivity extends AppCompatActivity {
 
     private TextView txtNamePlace, txtAddressPlace, txtDecreption, txtPrice;
     private ImageView imgBack, img1, img2, img3;
@@ -43,7 +41,7 @@ public class DetailsPlaces extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_details_place);
+        setContentView(R.layout.activity_details);
 
         setFindViewByID();
 
@@ -104,7 +102,7 @@ public class DetailsPlaces extends AppCompatActivity {
                         txtPrice.setText("Price: " + hotelItem.get(id).getPrice() + "đ");
                     }
 
-                    imagesAdapter = new ImagesAdapter(DetailsPlaces.this, imagesList);
+                    imagesAdapter = new ImagesAdapter(DetailsActivity.this, imagesList);
                     viewPager.setAdapter(imagesAdapter);
                     circleIndicator.setViewPager(viewPager);
                     imagesAdapter.registerDataSetObserver(circleIndicator.getDataSetObserver());
@@ -129,8 +127,7 @@ public class DetailsPlaces extends AppCompatActivity {
         imgBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(DetailsPlaces.this, MainActivity.class);
-                startActivity(intent);
+                finish();
             }
         });
 

@@ -5,8 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Views.ReviewActivity">
-    <include layout="@layout/toolbar_review"
-        android:id="@+id/toolbarRv"/>
+
+    <include
+        android:id="@+id/toolbarRv"
+        layout="@layout/toolbar_review" />
 
     <TextView
         android:id="@+id/txtRate"
@@ -33,8 +35,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/txtVote"
-        android:layout_marginTop="30dp"
-        />
+        android:layout_marginTop="30dp" />
 
 
 

@@ -73,7 +73,7 @@ public class HotelFragment extends Fragment {
         List<HotelModel> filterList = new ArrayList<>();
 
         for (HotelModel item: hotelItem){
-            if (item.getName_hotel().toLowerCase().contains(text.toLowerCase())){
+            if (item.getAddress_hotel().toLowerCase().contains(text.toLowerCase())){
                 filterList.add(item);
             }
         }

@@ -8,17 +8,18 @@ public class HotelModel {
     private String decription;
     private int price;
     private Images img_hotel;
+    private Location location;
 
 
-    public HotelModel(int id_hotel, String name_hotel, String address_hotel, String decription, int price, Images img_hotel) {
+    public HotelModel(int id_hotel, String name_hotel, String address_hotel, String decription, int price, Images img_hotel, Location location) {
         this.id_hotel = id_hotel;
         this.name_hotel = name_hotel;
         this.address_hotel = address_hotel;
         this.decription = decription;
         this.price = price;
         this.img_hotel = img_hotel;
+        this.location = location;
     }
-
 
     public HotelModel() {
     }
@@ -70,5 +71,13 @@ public class HotelModel {
 
     public void setImg_hotel(Images img_hotel) {
         this.img_hotel = img_hotel;
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
     }
 }

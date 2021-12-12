@@ -15,7 +15,6 @@ import android.widget.TextView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.rajendra.vacationtourapp.Views.DetailsPlaces;
 import com.rajendra.vacationtourapp.Views.FoodFragment;
 import com.rajendra.vacationtourapp.Views.HotelFragment;
 import com.rajendra.vacationtourapp.Views.PlaceFragment;
@@ -41,8 +40,6 @@ public class MainActivity extends AppCompatActivity {
 
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         getEmail = firebaseUser.getEmail();
-        txtAdd.setText(getEmail);
-
 
 
         imgProfile.setOnClickListener(new View.OnClickListener() {
@@ -50,7 +47,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent toProfile = new Intent(MainActivity.this, ProfileActivity.class);
                 toProfile.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                //toProfile.putExtra("email", getEmail);
                 startActivity(toProfile);
             }
         });
