@@ -6,19 +6,29 @@ import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.rajendra.vacationtourapp.Views.FoodFragment;
 import com.rajendra.vacationtourapp.Views.HotelFragment;
 import com.rajendra.vacationtourapp.Views.PlaceFragment;
 import com.rajendra.vacationtourapp.Views.ProfileActivity;
+import com.rajendra.vacationtourapp.Views.ReviewActivity;
+import com.rajendra.vacationtourapp.model.Review;
+import com.rajendra.vacationtourapp.model.User;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -40,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
 
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         getEmail = firebaseUser.getEmail();
+        CheckAdmin(getEmail);
 
 
         imgProfile.setOnClickListener(new View.OnClickListener() {
@@ -97,4 +108,9 @@ public class MainActivity extends AppCompatActivity {
                 .commit();
     }
 
+    private void CheckAdmin(String emailCheck){
+        if (emailCheck.equals("admin@gmail.com")){
+            txtAdd.setText("+");
+        }
+    }
 }

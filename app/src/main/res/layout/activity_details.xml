@@ -42,7 +42,7 @@
             app:layout_constraintTop_toBottomOf="@+id/imgcenter" />
 
         <TextView
-            android:id="@+id/txt_NamePlace"
+            android:id="@+id/txt_Name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -64,11 +64,11 @@
             android:textColor="#000000"
             android:textSize="16sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@+id/txt_NamePlace"
-            app:layout_constraintTop_toBottomOf="@+id/txt_NamePlace" />
+            app:layout_constraintStart_toStartOf="@+id/txt_Name"
+            app:layout_constraintTop_toBottomOf="@+id/txt_Name" />
 
         <TextView
-            android:id="@+id/txt_addressPlace"
+            android:id="@+id/txt_address"
             android:layout_width="235dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
@@ -140,7 +140,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
         <TextView
-            android:id="@+id/txt_decreptionPlace"
+            android:id="@+id/txt_decription"
             android:layout_width="359dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
@@ -179,9 +179,9 @@
             android:layout_marginBottom="20dp"
             android:background="@drawable/roundedbutton"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/txt_decreptionPlace"
-            app:layout_constraintStart_toStartOf="@+id/txt_decreptionPlace"
-            app:layout_constraintTop_toBottomOf="@+id/txt_decreptionPlace" />
+            app:layout_constraintEnd_toEndOf="@+id/txt_decription"
+            app:layout_constraintStart_toStartOf="@+id/txt_decription"
+            app:layout_constraintTop_toBottomOf="@+id/txt_decription" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>
