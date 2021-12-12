@@ -29,7 +29,7 @@
         <entry key="app/src/main/res/layout/activity_details.xml" value="0.4" />
         <entry key="app/src/main/res/layout/activity_details_place.xml" value="0.315625" />
         <entry key="app/src/main/res/layout/activity_login_screen.xml" value="0.31476449275362317" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.315625" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.536" />
         <entry key="app/src/main/res/layout/activity_profile.xml" value="0.4" />
         <entry key="app/src/main/res/layout/activity_review.xml" value="0.4" />
         <entry key="app/src/main/res/layout/activity_splash_screen.xml" value="0.3038949275362319" />
@@ -41,7 +41,7 @@
         <entry key="app/src/main/res/layout/hotels_row_item.xml" value="0.4" />
         <entry key="app/src/main/res/layout/item_images.xml" value="0.30932971014492755" />
         <entry key="app/src/main/res/layout/place_fragment.xml" value="0.315625" />
-        <entry key="app/src/main/res/layout/places_row_item.xml" value="0.536" />
+        <entry key="app/src/main/res/layout/places_row_item.xml" value="0.6" />
         <entry key="app/src/main/res/layout/profile_fragment.xml" value="0.16458333333333333" />
         <entry key="app/src/main/res/layout/recents_row_item.xml" value="0.16847826086956522" />
         <entry key="app/src/main/res/layout/review_row_item.xml" value="0.4" />

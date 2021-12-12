@@ -64,6 +64,7 @@ public class DetailsActivity extends AppCompatActivity {
         btnFindLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+            //btnFindLocation.setText(latitude + "+" + longtitude);
                 String uri = String.format(Locale.ENGLISH, "geo:%f,%f", latitude, longtitude);
                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
                 startActivity(intent);
@@ -89,7 +90,7 @@ public class DetailsActivity extends AppCompatActivity {
                             placeItem.add(place);
                         }
                         latitude = placeItem.get(id).getLocation().getLatitude();
-                        longtitude = placeItem.get(id).getLocation().getLatitude();
+                        longtitude = placeItem.get(id).getLocation().getLongtitude();
                         imagesList.add(new Photos(placeItem.get(id).getImg_place().getImg1()));
                         imagesList.add(new Photos(placeItem.get(id).getImg_place().getImg2()));
                         imagesList.add(new Photos(placeItem.get(id).getImg_place().getImg3()));
@@ -109,7 +110,7 @@ public class DetailsActivity extends AppCompatActivity {
                         }
 
                         latitude = hotelItem.get(id).getLocation().getLatitude();
-                        longtitude = hotelItem.get(id).getLocation().getLatitude();
+                        longtitude = hotelItem.get(id).getLocation().getLongtitude();
 
                         imagesList.add(new Photos(hotelItem.get(id).getImg_hotel().getImg1()));
                         imagesList.add(new Photos(hotelItem.get(id).getImg_hotel().getImg2()));
