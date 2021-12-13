@@ -15,21 +15,25 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".Views.AddFoodActivity"
+            android:name=".Views.ChangePasswordActivity"
             android:theme="@style/Add"
             android:exported="true" />
+        <activity
+            android:name=".Views.AddFoodActivity"
+            android:exported="true"
+            android:theme="@style/Add" />
         <activity
             android:name=".Views.AddDataActivity"
-            android:theme="@style/Add"
-            android:exported="true" />
+            android:exported="true"
+            android:theme="@style/Add" />
         <activity
             android:name=".Views.ReviewActivity"
-            android:theme="@style/Add"
-            android:exported="true" />
+            android:exported="true"
+            android:theme="@style/Add" />
         <activity
             android:name=".Views.ProfileActivity"
-            android:theme="@style/Profile"
-            android:exported="true" />
+            android:exported="true"
+            android:theme="@style/Profile" />
         <activity
             android:name=".Views.RegisterActivity"
             android:exported="true" />
@@ -38,8 +42,8 @@
             android:exported="true" />
         <activity
             android:name=".Views.DetailsActivity"
-            android:theme="@style/Add"
-            android:exported="true" />
+            android:exported="true"
+            android:theme="@style/Add" />
         <activity
             android:name=".MainActivity"
             android:windowSoftInputMode="adjustResize|adjustPan" />

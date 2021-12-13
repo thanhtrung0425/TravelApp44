@@ -61,7 +61,7 @@ public class ProfileActivity extends AppCompatActivity {
 
     private TextView txtnameuser, txtCountry, txtEmail, txtPhone;
     private ImageView imgAvatar;
-    private Button btnLogout;
+    private Button btnLogout, btnChangePass;
     private String emailUser;
 
 
@@ -126,6 +126,13 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 choosePicture();
+            }
+        });
+
+        btnChangePass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(ProfileActivity.this, ChangePasswordActivity.class));
             }
         });
     }
@@ -227,6 +234,7 @@ public class ProfileActivity extends AppCompatActivity {
         txtPhone = findViewById(R.id.txtPhone);
         btnLogout = findViewById(R.id.btnLogout);
         imgAvatar = findViewById(R.id.imgAvatar);
+        btnChangePass = findViewById(R.id.btnChangePass);
 
 
     }

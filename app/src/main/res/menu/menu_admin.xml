@@ -30,9 +30,4 @@
         android:id="@+id/update_food"
         android:enabled="true"
         android:title="Update food"/>
-
-
-
-
-
 </menu>
