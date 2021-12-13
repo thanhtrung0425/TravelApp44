@@ -2,7 +2,9 @@ package com.rajendra.vacationtourapp.Views;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.IntentCompat;
 
 import android.app.ProgressDialog;
@@ -10,9 +12,13 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.ColorSpace;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -54,8 +60,8 @@ import java.util.UUID;
 public class ProfileActivity extends AppCompatActivity {
 
     private TextView txtnameuser, txtCountry, txtEmail, txtPhone;
-    private ImageView imgBackFromProfile, imgAvatar;
-    private Button btnLogout, btnAddPlace, btnAddHotel, btnAddFood;
+    private ImageView imgAvatar;
+    private Button btnLogout;
     private String emailUser;
 
 
@@ -75,6 +81,7 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
+        CreateActionbar();
         setFindViewByID();
 
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -113,13 +120,6 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 Log.e("Error", "Failed to read value.", error.toException());
-            }
-        });
-
-        imgBackFromProfile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
             }
         });
 
@@ -198,7 +198,6 @@ public class ProfileActivity extends AppCompatActivity {
                 });
     }
 
-
     private String getIdUser(String getEmail){
         String key = "";
         for (int i = 0; i < getEmail.length(); i++){
@@ -223,53 +222,58 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     private void setFindViewByID(){
+
         txtnameuser = findViewById(R.id.txtUsername);
         txtCountry = findViewById(R.id.textCountry);
         txtEmail = findViewById(R.id.txtEmail);
         txtPhone = findViewById(R.id.txtPhone);
         btnLogout = findViewById(R.id.btnLogout);
-        imgBackFromProfile = findViewById(R.id.imgBackFromProfile);
         imgAvatar = findViewById(R.id.imgAvatar);
 
-        btnAddPlace = findViewById(R.id.btnAddPlace);
-        btnAddPlace.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(ProfileActivity.this, AddDataActivity.class);
-                intent.putExtra("key", "place");
-                startActivity(intent);
-            }
-        });
-        btnAddHotel = findViewById(R.id.btnAddHotel);
-        btnAddHotel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(ProfileActivity.this, AddDataActivity.class);
-                intent.putExtra("key", "hotel");
-                startActivity(intent);
-            }
-        });
-        btnAddFood = findViewById(R.id.btnAddFood);
-        btnAddFood.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(ProfileActivity.this, AddFoodActivity.class);
-                intent.putExtra("key", "food");
-                startActivity(intent);
-            }
-        });
 
     }
-
 
     private void CheckAdmin(String email){
 
         if (email.equals("admin@gmail.com")){
-            btnAddPlace.setVisibility(View.VISIBLE);
-            btnAddHotel.setVisibility(View.VISIBLE);
-            btnAddFood.setVisibility(View.VISIBLE);
         }
     }
-    
 
+    private void CreateActionbar(){
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("Profile");
+        actionBar.setDisplayHomeAsUpEnabled(true);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_admin, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+            case R.id.insert_place:
+                Intent addPlace = new Intent(ProfileActivity.this, AddDataActivity.class);
+                addPlace.putExtra("key", "place");
+                startActivity(addPlace);
+                return true;
+            case R.id.insert_hotel:
+                Intent addHotel = new Intent(ProfileActivity.this, AddDataActivity.class);
+                addHotel.putExtra("key", "hotel");
+                startActivity(addHotel);
+                return true;
+            case R.id.insert_food:
+                startActivity(new Intent(ProfileActivity.this, AddFoodActivity.class));
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+
+    }
 }

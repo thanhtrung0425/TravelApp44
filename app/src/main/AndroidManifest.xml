@@ -16,15 +16,18 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".Views.AddFoodActivity"
+            android:theme="@style/Add"
             android:exported="true" />
         <activity
             android:name=".Views.AddDataActivity"
+            android:theme="@style/Add"
             android:exported="true" />
         <activity
             android:name=".Views.ReviewActivity"
             android:exported="true" />
         <activity
             android:name=".Views.ProfileActivity"
+            android:theme="@style/Profile"
             android:exported="true" />
         <activity
             android:name=".Views.RegisterActivity"
@@ -34,6 +37,7 @@
             android:exported="true" />
         <activity
             android:name=".Views.DetailsActivity"
+            android:theme="@style/Add"
             android:exported="true" />
         <activity
             android:name=".MainActivity"

@@ -1,12 +1,15 @@
 package com.rajendra.vacationtourapp.Views;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -133,6 +136,11 @@ public class AddFoodActivity extends AppCompatActivity {
     }
 
     private void setFindViewByID(){
+
+        Drawable drawable = getResources().getDrawable(R.drawable.ic_baseline_close_24);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(drawable);
+
         edtID = findViewById(R.id.FedtInsertId);
         edtName = findViewById(R.id.FedtInsertname);
         edtAddress = findViewById(R.id.FedtInsertAddress);
@@ -180,5 +188,12 @@ public class AddFoodActivity extends AppCompatActivity {
             return true;
         }
             return false;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == android.R.id.home)
+            onBackPressed();
+        return super.onOptionsItemSelected(item);
     }
 }

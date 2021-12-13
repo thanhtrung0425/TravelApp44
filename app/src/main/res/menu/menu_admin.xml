@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <item
+        android:id="@+id/insert_place"
+        android:enabled="true"
+        app:showAsAction="collapseActionView"
+        android:title="Add place" />
+    <item
+        android:id="@+id/insert_hotel"
+        android:enabled="true"
+        app:showAsAction="collapseActionView"
+        android:title="Add hotel"/>
+
+    <item
+        android:id="@+id/insert_food"
+        android:enabled="true"
+        app:showAsAction="collapseActionView"
+        android:title="Add food"/>
+
+<!--    <item-->
+<!--        android:id="@+id/delete_place"-->
+<!--        android:enabled="true"-->
+<!--        app:showAsAction="collapseActionView"-->
+<!--        android:title="Delete place" />-->
+<!--    <item-->
+<!--        android:id="@+id/delete_hotel"-->
+<!--        android:enabled="true"-->
+<!--        app:showAsAction="collapseActionView"-->
+<!--        android:title="Delete hotel"/>-->
+
+<!--    <item-->
+<!--        android:id="@+id/delete_food"-->
+<!--        android:enabled="true"-->
+<!--        app:showAsAction="collapseActionView"-->
+<!--        android:title="Delete food"/>-->
+
+</menu>

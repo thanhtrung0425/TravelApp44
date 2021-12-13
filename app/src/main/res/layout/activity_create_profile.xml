@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Views.RegisterActivity"
-    android:background="#E0FFFF">
+    android:background="#33CCFF">
 
 
     <TextView
@@ -101,9 +101,9 @@
         android:id="@+id/btnCrRegister"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:layout_below="@+id/edtPhoneNumber"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
+        android:layout_marginBottom="70dp"
         android:background="@drawable/roundedbutton"
         android:elevation="10dp"
         android:text="Register"

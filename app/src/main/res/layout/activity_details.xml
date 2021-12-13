@@ -21,17 +21,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/img_caurong" />
-
-        <ImageView
-            android:id="@+id/imgBack"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_arrow_back_black_24dp" />
+            app:srcCompat="@drawable/img_caurong"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <me.relex.circleindicator.CircleIndicator
             android:id="@+id/circle_center"
@@ -182,6 +173,7 @@
             app:layout_constraintEnd_toEndOf="@+id/txt_decription"
             app:layout_constraintStart_toStartOf="@+id/txt_decription"
             app:layout_constraintTop_toBottomOf="@+id/txt_decription" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>

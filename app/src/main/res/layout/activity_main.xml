@@ -62,19 +62,6 @@
         android:text="PLACE"
         android:textColor="@android:color/background_dark" />
 
-    <TextView
-        android:id="@+id/addPlace"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/constraintLayout"
-        android:layout_marginStart="310dp"
-        android:layout_marginTop="4dp"
-        android:layout_toEndOf="@+id/txtPlace"
-        android:fontFamily="@font/roboto_bold"
-        android:text=""
-        android:textColor="@android:color/background_dark"
-        android:textSize="23sp" />
-
     <FrameLayout
         android:id="@+id/framefragment"
         android:layout_width="match_parent"

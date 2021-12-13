@@ -49,16 +49,6 @@ public class ReviewActivity extends AppCompatActivity {
         txtRate = findViewById(R.id.txtRate);
         txtVotes = findViewById(R.id.txtVote);
         recyclerReview = findViewById(R.id.recycler_review);
-        imgbackToMain = findViewById(R.id.imgReviewBack);
-        imgbackToMain.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-//                Intent intent = new Intent(ReviewActivity.this, MainActivity.class);
-//                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
-//                startActivity(intent);
-            }
-        });
 
         Intent getFood = getIntent();
         if (getFood != null){
