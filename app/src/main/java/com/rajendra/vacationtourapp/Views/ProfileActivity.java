@@ -255,15 +255,36 @@ public class ProfileActivity extends AppCompatActivity {
             case R.id.insert_place:
                 Intent addPlace = new Intent(ProfileActivity.this, AddDataActivity.class);
                 addPlace.putExtra("key", "place");
+                addPlace.putExtra("job", "insert");
                 startActivity(addPlace);
                 return true;
             case R.id.insert_hotel:
                 Intent addHotel = new Intent(ProfileActivity.this, AddDataActivity.class);
                 addHotel.putExtra("key", "hotel");
+                addHotel.putExtra("job", "insert");
                 startActivity(addHotel);
                 return true;
             case R.id.insert_food:
-                startActivity(new Intent(ProfileActivity.this, AddFoodActivity.class));
+                Intent insertFood = new Intent(ProfileActivity.this, AddFoodActivity.class);
+                insertFood.putExtra("job", "insert");
+                startActivity(insertFood);
+                return true;
+            case R.id.update_place:
+                Intent updatePlace = new Intent(ProfileActivity.this, AddDataActivity.class);
+                updatePlace.putExtra("key", "place");
+                updatePlace.putExtra("job", "update");
+                startActivity(updatePlace);
+                return true;
+            case R.id.update_hotel:
+                Intent updateHotel = new Intent(ProfileActivity.this, AddDataActivity.class);
+                updateHotel.putExtra("key", "hotel");
+                updateHotel.putExtra("job", "update");
+                startActivity(updateHotel);
+                return true;
+            case R.id.update_food:
+                Intent updateFood = new Intent(ProfileActivity.this, AddFoodActivity.class);
+                updateFood.putExtra("job", "update");
+                startActivity(updateFood);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

@@ -201,4 +201,25 @@
         android:background="@drawable/roundedbutton"
         android:text="Insert" />
 
+    <Button
+        android:id="@+id/FbtnShowData"
+        android:layout_width="95dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="30dp"
+        android:layout_marginLeft="95dp"
+        android:visibility="invisible"
+        android:background="@drawable/roundedbutton"
+        android:text="Show" />
+
+    <Button
+        android:id="@+id/FbtnUpdate"
+        android:layout_width="95dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="200dp"
+        android:layout_marginBottom="30dp"
+        android:visibility="invisible"
+        android:background="@drawable/roundedbutton"
+        android:text="Update" />
 </RelativeLayout>

@@ -156,9 +156,7 @@ public class ReviewActivity extends AppCompatActivity {
                 }
                 txtVotes.setText("based on " + reviewItem.size() + " reviews");
                 reviewAdapter.setDataReview(reviewItem);
-
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 Toast.makeText(ReviewActivity.this, "Get list Place falled", Toast.LENGTH_SHORT).show();
@@ -169,9 +167,7 @@ public class ReviewActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
-            Intent intent = new Intent(ReviewActivity.this, MainActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(intent);
+            finish();
         }
         return super.onOptionsItemSelected(item);
     }

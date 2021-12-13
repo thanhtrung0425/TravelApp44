@@ -8,6 +8,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -15,8 +16,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -26,6 +29,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.rajendra.vacationtourapp.MainActivity;
 import com.rajendra.vacationtourapp.R;
 import com.rajendra.vacationtourapp.model.DAO;
+import com.rajendra.vacationtourapp.model.FoodModel;
 import com.rajendra.vacationtourapp.model.HotelModel;
 import com.rajendra.vacationtourapp.model.Images;
 import com.rajendra.vacationtourapp.model.Location;
@@ -33,13 +37,13 @@ import com.rajendra.vacationtourapp.model.PlaceModel;
 
 import java.util.HashMap;
 
-public class AddDataActivity extends AppCompatActivity {
+public class AddDataActivity extends AppCompatActivity implements View.OnClickListener{
 
     private TextView tvPrice;
     private EditText edtInsertID, edtInsertName, edtInsertAddress, edtInsertIMG1, edtInsertIMG2, edtInsertIMG3;
     private EditText edtInsertDecription, edtInsertLatitude, edtInsertLongtitude, edtInsertPrice;
-    private Button btnInsert;
-    private String key;
+    private Button btnInsert, btnShowData, btnUpdate;
+    private String key, job;
     private PlaceModel place;
     private HotelModel hotel;
     private Images images;
@@ -51,20 +55,23 @@ public class AddDataActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_data);
 
+
+
+
         Intent getData = getIntent();
-        if (getData != null){
-            key = getData.getStringExtra("key");
+        key = getData.getStringExtra("key");
+        job = getData.getStringExtra("job");
+        setFindViewByID();
+        if (job.equals("update")){
+            btnInsert.setVisibility(View.INVISIBLE);
+            btnShowData.setVisibility(View.VISIBLE);
+            btnUpdate.setVisibility(View.VISIBLE);
         }
 
-        setFindViewByID();
 
-        btnInsert.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String idItem = edtInsertID.getText().toString();
-                CheckIDinDatabase(key, idItem);
-            }
-        });
+        btnInsert.setOnClickListener(this::onClick);
+        btnShowData.setOnClickListener(this::onClick);
+        btnUpdate.setOnClickListener(this::onClick);
     }
 
     private void CheckIDinDatabase(String keys, String idItem){
@@ -105,7 +112,6 @@ public class AddDataActivity extends AppCompatActivity {
                 @Override
                 public void onFailure(@NonNull Exception e) {
                     Toast.makeText(AddDataActivity.this, "INSERT failed", Toast.LENGTH_SHORT).show();
-
                 }
             });
         }
@@ -182,37 +188,13 @@ public class AddDataActivity extends AppCompatActivity {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(AddDataActivity.this);
         builder.setTitle("WARING!");
-        builder.setMessage("The ID already exist. Do you want update?");
-        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+        builder.setMessage("The ID already exist. Please change ID ?");
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                AddDatatoModel(keys);
-                DAO dao = new DAO(keys);
-                dao.update(idItem, hashMap)
-                        .addOnSuccessListener(new OnSuccessListener<Void>() {
-                            @Override
-                            public void onSuccess(Void unused) {
-                                Toast.makeText(AddDataActivity.this, "Updated", Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(AddDataActivity.this, MainActivity.class);
-                                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK| Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                startActivity(intent);
-                            }
-                        })
-                        .addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(AddDataActivity.this, "Update failed", Toast.LENGTH_SHORT).show();
-                            }
-                        });
             }
         });
-        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                Toast.makeText(AddDataActivity.this, "Please change ID to INSERT!", Toast.LENGTH_SHORT).show();
-                //dialogInterface.dismiss();
-            }
-        });
+
         builder.show();
     }
 
@@ -223,8 +205,9 @@ public class AddDataActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(drawable);
 
-
-        btnInsert = findViewById(R.id.btnInsert);
+        btnShowData = findViewById(R.id.btnShowData);
+        btnUpdate = findViewById(R.id.btnUpdate);
+        btnInsert = findViewById(R.id.btnInsertData);
         tvPrice = findViewById(R.id.tvPrice);
         edtInsertID = findViewById(R.id.edtInsertId);
         edtInsertName = findViewById(R.id.edtInsertname);
@@ -253,7 +236,7 @@ public class AddDataActivity extends AppCompatActivity {
             String latitude = edtInsertLatitude.getText().toString();
             String longtitude = edtInsertLongtitude.getText().toString();
             if (!edtInsertID.getText().toString().isEmpty() &&
-                !name.isEmpty() && !address.isEmpty() && !img1.isEmpty() && !img2.isEmpty() && !img3.isEmpty() &&
+                !name.isEmpty() && !address.isEmpty() && !img1.isEmpty() &&
                 !decription.isEmpty() && !latitude.isEmpty() && !longtitude.isEmpty()){
                 return true;
             }
@@ -265,5 +248,94 @@ public class AddDataActivity extends AppCompatActivity {
         if (item.getItemId() == android.R.id.home)
             onBackPressed();
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onClick(View view) {
+        String idItem = edtInsertID.getText().toString().trim();
+        if (view.getId() == R.id.btnInsertData){
+            CheckIDinDatabase(key, idItem);
+        }
+        if (view.getId() == R.id.btnShowData){
+            if(!idItem.isEmpty())
+                ShowDataByID(idItem, key);
+            else
+                Toast.makeText(getApplicationContext(), "Please fill id to get DATA", Toast.LENGTH_SHORT).show();
+
+        }
+        if (view.getId() == R.id.btnUpdate){
+            if (CheckData()){
+                UpdateData(idItem, key);
+            }
+            else
+                Toast.makeText(getApplicationContext(), "Please show data before update", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void UpdateData(String idItem, String key) {
+        AddDatatoModel(key);
+        DAO dao = new DAO(key);
+        dao.update(idItem, hashMap)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        Toast.makeText(getApplicationContext(), "Updated", Toast.LENGTH_SHORT).show();
+                        edtInsertName.setText("");
+                        edtInsertAddress.setText("");
+                        edtInsertIMG1.setText("");
+                        edtInsertIMG2.setText("");
+                        edtInsertIMG3.setText("");
+                        edtInsertDecription.setText("");
+                        edtInsertLatitude.setText("");
+                        edtInsertLongtitude.setText("");
+                        edtInsertPrice.setText("");
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(AddDataActivity.this, "Update failed", Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
+
+    private void ShowDataByID(String idItem, String key) {
+        FirebaseDatabase Database = FirebaseDatabase.getInstance();
+        DatabaseReference nameRef = Database.getReference(key);
+        nameRef.child(idItem).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if (!task.isSuccessful()) {
+                    Log.e("firebaseFailed: ", "Error getting data", task.getException());
+                }
+                else {
+                    Log.e("firebaseSuccess: ", String.valueOf(task.getResult().getValue()));
+                    DataSnapshot dataSnapshot = task.getResult();
+                    if (key.equals("place")) {
+                        PlaceModel placeModel = dataSnapshot.getValue(PlaceModel.class);
+                        edtInsertName.setText(placeModel.getName_place());
+                        edtInsertAddress.setText(placeModel.getAddress_place());
+                        edtInsertIMG1.setText(placeModel.getImg_place().getImg1());
+                        edtInsertIMG2.setText(placeModel.getImg_place().getImg2());
+                        edtInsertIMG3.setText(placeModel.getImg_place().getImg3());
+                        edtInsertDecription.setText(placeModel.getDecription());
+                        edtInsertLatitude.setText(placeModel.getLocation().getLatitude() + "");
+                        edtInsertLongtitude.setText(placeModel.getLocation().getLongtitude() + "");
+                    }
+                    else if (key.equals("hotel")){
+                        HotelModel hotelModel = dataSnapshot.getValue(HotelModel.class);
+                        edtInsertName.setText(hotelModel.getName_hotel());
+                        edtInsertAddress.setText(hotelModel.getAddress_hotel());
+                        edtInsertIMG1.setText(hotelModel.getImg_hotel().getImg1());
+                        edtInsertIMG2.setText(hotelModel.getImg_hotel().getImg2());
+                        edtInsertIMG3.setText(hotelModel.getImg_hotel().getImg3());
+                        edtInsertDecription.setText(hotelModel.getDecription());
+                        edtInsertLatitude.setText(hotelModel.getLocation().getLatitude() + "");
+                        edtInsertLongtitude.setText(hotelModel.getLocation().getLongtitude() + "");
+                        edtInsertPrice.setText(hotelModel.getPrice() + "");
+                    }
+                }
+            }
+        });
     }
 }

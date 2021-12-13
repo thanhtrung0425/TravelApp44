@@ -9,14 +9,17 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -27,13 +30,14 @@ import com.rajendra.vacationtourapp.R;
 import com.rajendra.vacationtourapp.model.DAO;
 import com.rajendra.vacationtourapp.model.FoodModel;
 import com.rajendra.vacationtourapp.model.Images;
+import com.rajendra.vacationtourapp.model.User;
 
 import java.util.HashMap;
 
-public class AddFoodActivity extends AppCompatActivity {
+public class AddFoodActivity extends AppCompatActivity implements View.OnClickListener{
 
     private EditText edtID, edtName, edtAddress, edtImg, edtPrice, edtRate;
-    private Button btnInsert;
+    private Button btnInsert, btnShow, btnUpdate;
     private FoodModel food;
     private Images images;
 
@@ -45,15 +49,17 @@ public class AddFoodActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_food);
         setFindViewByID();
 
+        Intent getjob = getIntent();
+        String job = getjob.getStringExtra("job");
+        if(job.equals("update")){
+            btnInsert.setVisibility(View.INVISIBLE);
+            btnShow.setVisibility(View.VISIBLE);
+            btnUpdate.setVisibility(View.VISIBLE);
+        }
 
-        btnInsert.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String id = edtID.getText().toString();
-                CheckIDinDatabase(id);
-            }
-        });
-
+        btnInsert.setOnClickListener(this::onClick);
+        btnShow.setOnClickListener(this::onClick);
+        btnUpdate.setOnClickListener(this::onClick);
 
     }
 
@@ -102,34 +108,10 @@ public class AddFoodActivity extends AppCompatActivity {
     private void CheckAnswer(String idItem){
         AlertDialog.Builder builder = new AlertDialog.Builder(AddFoodActivity.this);
         builder.setTitle("WARING!");
-        builder.setMessage("The ID already exist. Do you want update?");
-        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+        builder.setMessage("The ID already exist. Please change ID?");
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                DAO dao = new DAO("food");
-                dao.update(idItem, hashMap)
-                        .addOnSuccessListener(new OnSuccessListener<Void>() {
-                            @Override
-                            public void onSuccess(Void unused) {
-                                Toast.makeText(AddFoodActivity.this, "Updated", Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(AddFoodActivity.this, MainActivity.class);
-                                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK| Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                startActivity(intent);
-                            }
-                        })
-                        .addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(AddFoodActivity.this, "Update failed", Toast.LENGTH_SHORT).show();
-                            }
-                        });
-            }
-        });
-        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                Toast.makeText(AddFoodActivity.this, "Please change ID to INSERT!", Toast.LENGTH_SHORT).show();
-                //dialogInterface.dismiss();
             }
         });
         builder.show();
@@ -148,6 +130,8 @@ public class AddFoodActivity extends AppCompatActivity {
         edtPrice = findViewById(R.id.FedtInsertPrice);
         edtRate = findViewById(R.id.FedtInsertRate);
         btnInsert = findViewById(R.id.FbtnInsert);
+        btnShow = findViewById(R.id.FbtnShowData);
+        btnUpdate = findViewById(R.id.FbtnUpdate);
     }
 
     private void AddDatatoModel(){
@@ -176,11 +160,9 @@ public class AddFoodActivity extends AppCompatActivity {
     }
 
     private boolean CheckData() {
-        int id = Integer.parseInt(edtID.getText().toString());
         String name = edtName.getText().toString();
         String address = edtAddress.getText().toString();
         String Img = edtImg.getText().toString();
-        int price = Integer.parseInt(edtPrice.getText().toString());
         String rate = edtName.getText().toString();
 
         if (!edtID.getText().toString().isEmpty() && !name.isEmpty() && !address.isEmpty() && !Img.isEmpty() &&
@@ -195,5 +177,74 @@ public class AddFoodActivity extends AppCompatActivity {
         if (item.getItemId() == android.R.id.home)
             onBackPressed();
         return super.onOptionsItemSelected(item);
+    }
+
+
+    @Override
+    public void onClick(View view) {
+        String id = edtID.getText().toString().trim();
+        if (view.getId() == R.id.FbtnInsert) {
+            CheckIDinDatabase(id);
+        }
+        if (view.getId() == R.id.FbtnShowData){
+            if(!id.isEmpty())
+                ShowDataByID(id);
+            else
+                Toast.makeText(getApplicationContext(), "Please fill id to get DATA", Toast.LENGTH_SHORT).show();
+        }
+        if (view.getId() == R.id.FbtnUpdate){
+            if (CheckData()){
+                UpdateData(id);
+            }
+            else
+                Toast.makeText(getApplicationContext(), "Please show data before update", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void UpdateData(String id) {
+        AddDatatoModel();
+        DAO dao = new DAO("food");
+        dao.update(id, hashMap)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        Toast.makeText(AddFoodActivity.this, "Updated", Toast.LENGTH_SHORT).show();
+                        edtID.setText("");
+                        edtAddress.setText("");
+                        edtImg.setText("");
+                        edtName.setText("");
+                        edtPrice.setText("");
+                        edtRate.setText("");
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(AddFoodActivity.this, "Update failed", Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
+
+    private void ShowDataByID(String id) {
+        FirebaseDatabase Database = FirebaseDatabase.getInstance();
+        DatabaseReference nameRef = Database.getReference("food");
+        nameRef.child(id).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if (!task.isSuccessful()) {
+                    Log.e("firebaseFailed: ", "Error getting data", task.getException());
+                }
+                else {
+                    Log.e("firebaseSuccess: ", String.valueOf(task.getResult().getValue()));
+                    DataSnapshot dataSnapshot = task.getResult();
+                    FoodModel foodModel = dataSnapshot.getValue(FoodModel.class);
+                    edtName.setText(foodModel.getName_food());
+                    edtAddress.setText(foodModel.getAddress_food());
+                    edtImg.setText(foodModel.getImg_food().getImg1());
+                    edtPrice.setText("" + foodModel.getPrice());
+                    edtRate.setText(foodModel.getRate());
+                }
+            }
+        });
     }
 }

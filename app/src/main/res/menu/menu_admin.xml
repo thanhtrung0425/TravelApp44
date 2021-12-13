@@ -6,31 +6,33 @@
     <item
         android:id="@+id/insert_place"
         android:enabled="true"
-        app:showAsAction="collapseActionView"
         android:title="Add place" />
     <item
         android:id="@+id/insert_hotel"
         android:enabled="true"
-        app:showAsAction="collapseActionView"
         android:title="Add hotel"/>
 
     <item
         android:id="@+id/insert_food"
         android:enabled="true"
-        app:showAsAction="collapseActionView"
         android:title="Add food"/>
 
+    <item
+        android:id="@+id/update_place"
+        android:enabled="true"
+        android:title="Update place" />
+    <item
+        android:id="@+id/update_hotel"
+        android:enabled="true"
+        android:title="Update hotel"/>
 
-<!--    <item-->
-<!--        android:id="@+id/delete_hotel"-->
-<!--        android:enabled="true"-->
-<!--        app:showAsAction="collapseActionView"-->
-<!--        android:title="Delete hotel"/>-->
+    <item
+        android:id="@+id/update_food"
+        android:enabled="true"
+        android:title="Update food"/>
 
-<!--    <item-->
-<!--        android:id="@+id/delete_food"-->
-<!--        android:enabled="true"-->
-<!--        app:showAsAction="collapseActionView"-->
-<!--        android:title="Delete food"/>-->
+
+
+
 
 </menu>

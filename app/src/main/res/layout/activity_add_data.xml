@@ -268,7 +268,7 @@
 
 
     <Button
-        android:id="@+id/btnInsert"
+        android:id="@+id/btnInsertData"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -276,5 +276,27 @@
         android:layout_marginBottom="30dp"
         android:background="@drawable/roundedbutton"
         android:text="Insert" />
+
+    <Button
+        android:id="@+id/btnShowData"
+        android:layout_width="95dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="30dp"
+        android:layout_marginLeft="95dp"
+        android:visibility="invisible"
+        android:background="@drawable/roundedbutton"
+        android:text="Show" />
+
+    <Button
+        android:id="@+id/btnUpdate"
+        android:layout_width="95dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="200dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/roundedbutton"
+        android:text="Update"
+        android:visibility="invisible" />
 
 </RelativeLayout>
