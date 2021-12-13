@@ -53,7 +53,7 @@
         android:layout_height="50dp"
         android:layout_below="@+id/edtNewPass"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="30dp"
         android:background="@drawable/roundedbutton"
         android:elevation="10dp"
         android:text="Login"
