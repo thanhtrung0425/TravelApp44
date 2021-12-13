@@ -63,23 +63,30 @@ public class LoginScreen extends AppCompatActivity {
             public void onClick(View view) {
                 String getEmail = edtAccount.getText().toString();
                 String getPassword = edtPassword.getText().toString();
-                mAuth.signInWithEmailAndPassword(getEmail, getPassword)
-                        .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
-                            @Override
-                            public void onSuccess(AuthResult authResult) {
-                                Intent loginIntent = new Intent(LoginScreen.this, MainActivity.class);
-                                loginIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                startActivity(loginIntent);
-                                Toast.makeText(LoginScreen.this, "Login success!", Toast.LENGTH_SHORT).show();
-                            }
-                        })
-                        .addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(LoginScreen.this, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
+                if (getEmail.isEmpty()){
+                    Toast.makeText(LoginScreen.this, "Please enter your account", Toast.LENGTH_SHORT).show();
+                }
+                else  if (getPassword.isEmpty()){
+                    Toast.makeText(LoginScreen.this, "Please enter your password", Toast.LENGTH_SHORT).show();
+                }else {
+                    mAuth.signInWithEmailAndPassword(getEmail, getPassword)
+                            .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+                                @Override
+                                public void onSuccess(AuthResult authResult) {
+                                    Intent loginIntent = new Intent(LoginScreen.this, MainActivity.class);
+                                    loginIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                    startActivity(loginIntent);
+                                    Toast.makeText(LoginScreen.this, "Login success!", Toast.LENGTH_SHORT).show();
+                                }
+                            })
+                            .addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Toast.makeText(LoginScreen.this, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
 
-                            }
-                        });
+                                }
+                            });
+                }
             }
         });
 

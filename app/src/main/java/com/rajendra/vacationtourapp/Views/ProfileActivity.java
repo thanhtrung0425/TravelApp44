@@ -86,7 +86,6 @@ public class ProfileActivity extends AppCompatActivity {
 
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         emailUser = firebaseUser.getEmail();
-        CheckAdmin(emailUser);
 
         mFirestorage = FirebaseStorage.getInstance();
         mStoreRef = mFirestorage.getReference("ImageFolder/");
@@ -218,7 +217,6 @@ public class ProfileActivity extends AppCompatActivity {
         Intent logoutIntent = new Intent(ProfileActivity.this, LoginScreen.class);
         logoutIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(logoutIntent);
-        finish();
     }
 
     private void setFindViewByID(){
@@ -233,12 +231,6 @@ public class ProfileActivity extends AppCompatActivity {
 
     }
 
-    private void CheckAdmin(String email){
-
-        if (email.equals("admin@gmail.com")){
-        }
-    }
-
     private void CreateActionbar(){
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("Profile");
@@ -248,7 +240,9 @@ public class ProfileActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_admin, menu);
+        if (emailUser.equals("admin@gmail.com")){
+            inflater.inflate(R.menu.menu_admin, menu);
+        }
         return true;
     }
 

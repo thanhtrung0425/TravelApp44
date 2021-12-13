@@ -114,6 +114,9 @@ public class AddDataActivity extends AppCompatActivity {
                 @Override
                 public void onSuccess(Void unused) {
                     Toast.makeText(AddDataActivity.this, "INSERT success", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(AddDataActivity.this, MainActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK| Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(intent);
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
@@ -146,6 +149,7 @@ public class AddDataActivity extends AppCompatActivity {
         if (keyModel.equals("place")) {
             place = new PlaceModel(id, name, address, decription, images, location);
             hashMap = new HashMap<>();
+            hashMap.put("id_place", id);
             hashMap.put("name_place", name);
             hashMap.put("address_place", address);
             hashMap.put("decription", decription);
@@ -158,11 +162,12 @@ public class AddDataActivity extends AppCompatActivity {
                 int price = Integer.parseInt(edtInsertPrice.getText().toString());
                 hotel = new HotelModel(id, name, address, decription, price, images, location);
                 hashMap = new HashMap<>();
+                hashMap.put("id_hotel", id);
                 hashMap.put("name_hotel", name);
                 hashMap.put("address_hotel", address);
                 hashMap.put("decription", decription);
                 hashMap.put("price", price);
-                hashMap.put("img_place", images);
+                hashMap.put("img_hotel", images);
                 hashMap.put("location", location);
             }
             else
