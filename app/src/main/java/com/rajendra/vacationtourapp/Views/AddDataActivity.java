@@ -110,7 +110,7 @@ public class AddDataActivity extends AppCompatActivity {
             });
         }
         else if (keys.equals("hotel")){
-            dao.update(hotel, idItem, hashMap).addOnSuccessListener(new OnSuccessListener<Void>() {
+            dao.update(idItem, hashMap).addOnSuccessListener(new OnSuccessListener<Void>() {
                 @Override
                 public void onSuccess(Void unused) {
                     Toast.makeText(AddDataActivity.this, "INSERT success", Toast.LENGTH_SHORT).show();
@@ -188,43 +188,22 @@ public class AddDataActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialogInterface, int i) {
                 AddDatatoModel(keys);
                 DAO dao = new DAO(keys);
-                if (keys.equals("place")){
-                    dao.update(place, idItem, hashMap)
-                            .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                @Override
-                                public void onSuccess(Void unused) {
-                                    Toast.makeText(AddDataActivity.this, "Updated", Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent(AddDataActivity.this, MainActivity.class);
-                                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK| Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                    startActivity(intent);
-                                }
-                            })
-                            .addOnFailureListener(new OnFailureListener() {
-                                @Override
-                                public void onFailure(@NonNull Exception e) {
-                                    Toast.makeText(AddDataActivity.this, "Update failed", Toast.LENGTH_SHORT).show();
-                                }
-                            });
-
-                }
-                if (key.equals("hotel")){
-                    dao.update(hotel, idItem, hashMap)
-                            .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                @Override
-                                public void onSuccess(Void unused) {
-                                    Toast.makeText(AddDataActivity.this, "Updated", Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent(AddDataActivity.this, MainActivity.class);
-                                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK| Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                    startActivity(intent);
-                                }
-                            })
-                            .addOnFailureListener(new OnFailureListener() {
-                                @Override
-                                public void onFailure(@NonNull Exception e) {
-                                    Toast.makeText(AddDataActivity.this, "Update failed", Toast.LENGTH_SHORT).show();
-                                }
-                            });
-                }
+                dao.update(idItem, hashMap)
+                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void unused) {
+                                Toast.makeText(AddDataActivity.this, "Updated", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(AddDataActivity.this, MainActivity.class);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK| Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                startActivity(intent);
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(AddDataActivity.this, "Update failed", Toast.LENGTH_SHORT).show();
+                            }
+                        });
             }
         });
         builder.setNegativeButton("No", new DialogInterface.OnClickListener() {

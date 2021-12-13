@@ -49,7 +49,6 @@ public class MainActivity extends AppCompatActivity {
 
         txtPlace = findViewById(R.id.txtPlace);
         imgProfile = findViewById(R.id.imgProfile);
-
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         getEmail = firebaseUser.getEmail();
 

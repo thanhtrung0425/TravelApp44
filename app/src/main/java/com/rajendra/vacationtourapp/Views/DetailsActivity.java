@@ -9,6 +9,8 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -16,8 +18,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -48,7 +54,7 @@ public class DetailsActivity extends AppCompatActivity {
     private CircleIndicator circleIndicator;
     private ImagesAdapter imagesAdapter;
     private List<Photos> imagesList;
-    private String userEmail, keys, id_data;
+    private String keys, id_data;
     private double latitude, longtitude;
 
 
@@ -61,7 +67,6 @@ public class DetailsActivity extends AppCompatActivity {
 
         Bundle getPlace = getIntent().getExtras();
         if (getPlace != null){
-            userEmail = getPlace.getString("email");
             keys = getPlace.getString("keys");
             id_data = getPlace.getString("id_item");
             int id = Integer.parseInt(id_data);
@@ -86,51 +91,49 @@ public class DetailsActivity extends AppCompatActivity {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRefPlace = database.getReference(keys);
 
-            myRefPlace.addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
+        myRefPlace.child(String.valueOf(id)).get()
+                .addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if (!task.isSuccessful()) {
+                    Log.e("firebaseFailed", "Error getting data", task.getException());
+                }
+                else {
+                    Log.d("firebaseSuccess", String.valueOf(task.getResult().getValue()));
+                    DataSnapshot dataSnapshot = task.getResult();
                     imagesList = new ArrayList<>();
-                    if (keys.equals("place")) {
-                        List<PlaceModel> placeItem = new ArrayList<>();
-                        for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                            //Log.e("onDataChangeDetails", dataSnapshot.getValue().toString());
-                            PlaceModel place = dataSnapshot.getValue(PlaceModel.class);
-                            placeItem.add(place);
-                        }
-                        latitude = placeItem.get(id).getLocation().getLatitude();
-                        longtitude = placeItem.get(id).getLocation().getLongtitude();
-                        imagesList.add(new Photos(placeItem.get(id).getImg_place().getImg1()));
-                        imagesList.add(new Photos(placeItem.get(id).getImg_place().getImg2()));
-                        imagesList.add(new Photos(placeItem.get(id).getImg_place().getImg3()));
+                    if(keys.equals("place")){
+                        PlaceModel pItem = dataSnapshot.getValue(PlaceModel.class);
 
-                        Picasso.get().load(placeItem.get(id).getImg_place().getImg1()).into(img1);
-                        Picasso.get().load(placeItem.get(id).getImg_place().getImg2()).into(img2);
-                        Picasso.get().load(placeItem.get(id).getImg_place().getImg3()).into(img3);
-                        txtName.setText(placeItem.get(id).getName_place());
-                        txtAddress.setText(placeItem.get(id).getAddress_place());
-                        txtDecreption.setText(placeItem.get(id).getDecription());
+                        latitude = pItem.getLocation().getLatitude();
+                        longtitude = pItem.getLocation().getLongtitude();
+
+                        imagesList.add(new Photos(pItem.getImg_place().getImg1()));
+                        imagesList.add(new Photos(pItem.getImg_place().getImg2()));
+                        imagesList.add(new Photos(pItem.getImg_place().getImg3()));
+                        Picasso.get().load(pItem.getImg_place().getImg1()).into(img1);
+                        Picasso.get().load(pItem.getImg_place().getImg2()).into(img2);
+                        Picasso.get().load(pItem.getImg_place().getImg3()).into(img3);
+                        txtName.setText(pItem.getName_place());
+                        txtAddress.setText(pItem.getAddress_place());
+                        txtDecreption.setText(pItem.getDecription());
                     }
-                    else if (keys.equals("hotel")){
-                        List<HotelModel> hotelItem = new ArrayList<>();
-                        for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                            HotelModel hotel = dataSnapshot.getValue(HotelModel.class);
-                            hotelItem.add(hotel);
-                        }
+                    else if(keys.equals("hotel")){
+                        HotelModel hItem = dataSnapshot.getValue(HotelModel.class);
 
-                        latitude = hotelItem.get(id).getLocation().getLatitude();
-                        longtitude = hotelItem.get(id).getLocation().getLongtitude();
+                        latitude = hItem.getLocation().getLatitude();
+                        longtitude = hItem.getLocation().getLongtitude();
 
-                        imagesList.add(new Photos(hotelItem.get(id).getImg_hotel().getImg1()));
-                        imagesList.add(new Photos(hotelItem.get(id).getImg_hotel().getImg2()));
-                        imagesList.add(new Photos(hotelItem.get(id).getImg_hotel().getImg3()));
-
-                        Picasso.get().load(hotelItem.get(id).getImg_hotel().getImg1()).into(img1);
-                        Picasso.get().load(hotelItem.get(id).getImg_hotel().getImg2()).into(img2);
-                        Picasso.get().load(hotelItem.get(id).getImg_hotel().getImg3()).into(img3);
-                        txtName.setText(hotelItem.get(id).getName_hotel());
-                        txtAddress.setText(hotelItem.get(id).getAddress_hotel());
-                        txtDecreption.setText(hotelItem.get(id).getDecription());
-                        txtPrice.setText("Price: " + hotelItem.get(id).getPrice() + "đ");
+                        imagesList.add(new Photos(hItem.getImg_hotel().getImg1()));
+                        imagesList.add(new Photos(hItem.getImg_hotel().getImg2()));
+                        imagesList.add(new Photos(hItem.getImg_hotel().getImg3()));
+                        Picasso.get().load(hItem.getImg_hotel().getImg1()).into(img1);
+                        Picasso.get().load(hItem.getImg_hotel().getImg2()).into(img2);
+                        Picasso.get().load(hItem.getImg_hotel().getImg3()).into(img3);
+                        txtName.setText(hItem.getName_hotel());
+                        txtAddress.setText(hItem.getAddress_hotel());
+                        txtDecreption.setText(hItem.getDecription());
+                        txtPrice.setText("Price: " + hItem.getPrice() + "đ");
                     }
 
                     imagesAdapter = new ImagesAdapter(DetailsActivity.this, imagesList);
@@ -138,12 +141,15 @@ public class DetailsActivity extends AppCompatActivity {
                     circleIndicator.setViewPager(viewPager);
                     imagesAdapter.registerDataSetObserver(circleIndicator.getDataSetObserver());
                 }
+            }
+        })
+                .addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(getApplicationContext(), "" + e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
 
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-
-                }
-            });
     }
 
     private void setFindViewByID(){
@@ -169,9 +175,46 @@ public class DetailsActivity extends AppCompatActivity {
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        String userEmail = firebaseUser.getEmail();
+        if (userEmail.equals("admin@gmail.com")){
+            inflater.inflate(R.menu.menu_details, menu);
+        }
+        return true;
+    }
+
+    @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == android.R.id.home)
-            onBackPressed();
+        switch (item.getItemId()){
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+            case R.id.delete:
+                RemoveData();
+                return true;
+        }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void RemoveData() {
+        DAO dao = new DAO(keys);
+        dao.remove(id_data).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void unused) {
+                Toast.makeText(getApplicationContext(), "Deleted", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK| Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+            }
+        })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(getApplicationContext(), "Delete failed", Toast.LENGTH_SHORT).show();
+
+                    }
+                });
     }
 }

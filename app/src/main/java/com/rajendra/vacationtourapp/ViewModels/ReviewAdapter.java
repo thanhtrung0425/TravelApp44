@@ -47,7 +47,11 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ReviewView
         holder.txtNameReview.setText(reviewList.get(position).getNamePerson());
         holder.txtRate.setText(reviewList.get(position).getRate_review());
         holder.txtReview.setText(reviewList.get(position).getReview());
-        Picasso.get().load(reviewList.get(position).getImage_reviewer()).into(holder.img_reviewer);
+
+        if (!reviewList.get(position).getImage_reviewer().equals(""))
+            Picasso.get().load(reviewList.get(position).getImage_reviewer()).into(holder.img_reviewer);
+        else
+            holder.img_reviewer.setImageResource(R.drawable.boy_avatar);
     }
 
     @Override

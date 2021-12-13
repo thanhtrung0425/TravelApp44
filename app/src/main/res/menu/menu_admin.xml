@@ -20,11 +20,7 @@
         app:showAsAction="collapseActionView"
         android:title="Add food"/>
 
-<!--    <item-->
-<!--        android:id="@+id/delete_place"-->
-<!--        android:enabled="true"-->
-<!--        app:showAsAction="collapseActionView"-->
-<!--        android:title="Delete place" />-->
+
 <!--    <item-->
 <!--        android:id="@+id/delete_hotel"-->
 <!--        android:enabled="true"-->

@@ -21,8 +21,10 @@
             android:id="@+id/reviewer_image"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_margin="5dp"
-            android:src="@drawable/boy_avatar" />
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"/>
 
         <TextView
             android:id="@+id/txtNameReview"
@@ -48,12 +50,14 @@
             android:id="@+id/txtReview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Trong rượu, ta tìm thấy trí tuệ. Trong bia, ta thấy được sức mạnh. Trong nước lọc, ta phát hiện vi khuẩn, và cuối cùng trong ăn uống, ta tìm thấy niềm vui."
-            android:justificationMode="inter_word"
             android:layout_below="@+id/reviewer_image"
             android:layout_marginStart="12dp"
-            android:layout_marginEnd="12dp"
             android:layout_marginTop="5dp"
-            android:layout_marginBottom="12dp"/>
+            android:layout_marginEnd="12dp"
+            android:layout_marginBottom="12dp"
+            android:justificationMode="inter_word"
+            android:textSize="15sp"
+            android:textColor="#000010"
+            android:text="Trong rượu, ta tìm thấy trí tuệ. Trong bia, ta thấy được sức mạnh. Trong nước lọc, ta phát hiện vi khuẩn, và cuối cùng trong ăn uống, ta tìm thấy niềm vui." />
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

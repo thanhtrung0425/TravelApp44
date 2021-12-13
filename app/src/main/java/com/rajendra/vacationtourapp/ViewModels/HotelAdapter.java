@@ -24,7 +24,7 @@ import java.util.List;
 public class HotelAdapter extends RecyclerView.Adapter<HotelAdapter.HotelViewHolder> {
 
     private Context hotelcontext;
-    List<HotelModel> HotelModelList;
+    private List<HotelModel> HotelModelList;
 
     public HotelAdapter(Context hotelcontext, List<HotelModel> hotelModelList) {
         this.hotelcontext = hotelcontext;

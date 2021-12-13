@@ -107,7 +107,7 @@ public class AddFoodActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 DAO dao = new DAO("food");
-                dao.update(food, idItem, hashMap)
+                dao.update(idItem, hashMap)
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void unused) {

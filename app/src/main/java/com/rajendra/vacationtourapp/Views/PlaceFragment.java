@@ -69,13 +69,12 @@ public class PlaceFragment extends Fragment {
         placeRecycler.setLayoutManager(new GridLayoutManager(getContext(), 2));
         placeAdapter = new PlaceAdapter(getContext(), placeItem);
         placeRecycler.setAdapter(placeAdapter);
-
-
+        placeAdapter.notifyDataSetChanged();
     }
 
     private void filterPlace(String text) {
-        List<PlaceModel> filterList = new ArrayList<>();
 
+        List<PlaceModel> filterList = new ArrayList<>();
         for (PlaceModel item: placeItem){
             if (item.getAddress_place().toLowerCase().contains(text.toLowerCase())){
                 filterList.add(item);

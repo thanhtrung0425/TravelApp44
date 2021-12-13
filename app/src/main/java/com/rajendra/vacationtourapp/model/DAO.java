@@ -32,35 +32,19 @@ public class DAO {
 //        if (place == null)
         return databaseReference.child(idItem).setValue(food);
     }
-    public Task<Void> add(Review review, String idItem){
+    public Task<Void> add(Review review, int idItem){
 //        if (place == null)
-        return databaseReference.child(idItem).setValue(review);
+        return databaseReference.child(String.valueOf(idItem)).setValue(review);
     }
 
-    public Task<Void> update(PlaceModel place, String idItem, HashMap<String, Object> hashMap){
-//        if (place == null)
-        return databaseReference.child(idItem).updateChildren(hashMap);
-    }
-    public Task<Void> update(HotelModel hotel, String idItem, HashMap<String, Object> hashMap){
-//        if (place == null)
-        return databaseReference.child(idItem).updateChildren(hashMap);
-    }
-    public Task<Void> update(FoodModel food, String idItem, HashMap<String, Object> hashMap){
+    public Task<Void> update(String idItem, HashMap<String, Object> hashMap){
 //        if (place == null)
         return databaseReference.child(idItem).updateChildren(hashMap);
     }
 
-    public Task<Void> remove(FoodModel food, String idItem){
+    public Task<Void> remove(String idItem) {
 //        if (place == null)
         return databaseReference.child(idItem).removeValue();
-    }
-    public Task<Void> remove(PlaceModel placeModel, String idItem){
-//        if (place == null)
-        return databaseReference.child(idItem).removeValue();
-    }
-    public Task<Void> remove(HotelModel hotelModel, String idItem){
-//        if (place == null)
-        return databaseReference.child(idItem).removeValue();
-    }
 
+    }
 }

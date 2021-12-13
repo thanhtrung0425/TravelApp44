@@ -41,7 +41,7 @@
 
         <TextView
             android:id="@+id/food_name"
-            android:layout_width="220dp"
+            android:layout_width="240dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="15dp"
@@ -53,8 +53,8 @@
 
         <TextView
             android:id="@+id/food_address"
-            android:layout_width="160dp"
-            android:layout_height="22dp"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
             android:text="Address"
             android:textSize="14sp"
