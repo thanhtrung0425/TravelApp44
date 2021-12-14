@@ -71,7 +71,7 @@ public class AddFoodActivity extends AppCompatActivity implements View.OnClickLi
                 if (CheckData()){
                     AddDatatoModel();
                     if(snapshot.hasChild(idItem)){
-                        CheckAnswer(idItem);
+                        CheckAnswer();
                     }else {
                         DAO dao = new DAO("food");
                         dao.add(food, idItem)
@@ -105,7 +105,7 @@ public class AddFoodActivity extends AppCompatActivity implements View.OnClickLi
         });
     }
 
-    private void CheckAnswer(String idItem){
+    private void CheckAnswer(){
         AlertDialog.Builder builder = new AlertDialog.Builder(AddFoodActivity.this);
         builder.setTitle("WARING!");
         builder.setMessage("The ID already exist. Please change ID?");

@@ -56,6 +56,7 @@ public class DetailsActivity extends AppCompatActivity {
     private List<Photos> imagesList;
     private String keys, id_data;
     private double latitude, longtitude;
+    private static final String img_notFound = "https://www.semtek.com.vn/file/2021/01/loi-404-not-found-3-768x590.png";
 
 
     @Override
@@ -108,12 +109,35 @@ public class DetailsActivity extends AppCompatActivity {
                         latitude = pItem.getLocation().getLatitude();
                         longtitude = pItem.getLocation().getLongtitude();
 
-                        imagesList.add(new Photos(pItem.getImg_place().getImg1()));
-                        imagesList.add(new Photos(pItem.getImg_place().getImg2()));
-                        imagesList.add(new Photos(pItem.getImg_place().getImg3()));
-                        Picasso.get().load(pItem.getImg_place().getImg1()).into(img1);
-                        Picasso.get().load(pItem.getImg_place().getImg2()).into(img2);
-                        Picasso.get().load(pItem.getImg_place().getImg3()).into(img3);
+                        if (pItem.getImg_place().getImg1() != null && !pItem.getImg_place().getImg1().isEmpty()) {
+                            Picasso.get().load(pItem.getImg_place().getImg1()).into(img1);
+                            imagesList.add(new Photos(pItem.getImg_place().getImg1()));
+                        }
+                        else {
+                            img1.setImageResource(R.drawable.img_not_found);
+                            imagesList.add(new Photos(img_notFound));
+
+                        }
+                        if (pItem.getImg_place().getImg2() != null && !pItem.getImg_place().getImg2().isEmpty()) {
+                            Picasso.get().load(pItem.getImg_place().getImg2()).into(img2);
+                            imagesList.add(new Photos(pItem.getImg_place().getImg2()));
+                        }
+                        else{
+                            img2.setImageResource(R.drawable.img_not_found);
+                            imagesList.add(new Photos(img_notFound));
+                        }
+
+                        if (pItem.getImg_place().getImg3() != null && !pItem.getImg_place().getImg3().isEmpty()) {
+                            Picasso.get().load(pItem.getImg_place().getImg3()).into(img3);
+                            imagesList.add(new Photos(pItem.getImg_place().getImg3()));
+                        }
+                        else{
+                            img3.setImageResource(R.drawable.img_not_found);
+                            imagesList.add(new Photos(img_notFound));
+                        }
+
+
+
                         txtName.setText(pItem.getName_place());
                         txtAddress.setText(pItem.getAddress_place());
                         txtDecreption.setText(pItem.getDecription());
@@ -124,12 +148,34 @@ public class DetailsActivity extends AppCompatActivity {
                         latitude = hItem.getLocation().getLatitude();
                         longtitude = hItem.getLocation().getLongtitude();
 
-                        imagesList.add(new Photos(hItem.getImg_hotel().getImg1()));
-                        imagesList.add(new Photos(hItem.getImg_hotel().getImg2()));
-                        imagesList.add(new Photos(hItem.getImg_hotel().getImg3()));
-                        Picasso.get().load(hItem.getImg_hotel().getImg1()).into(img1);
-                        Picasso.get().load(hItem.getImg_hotel().getImg2()).into(img2);
-                        Picasso.get().load(hItem.getImg_hotel().getImg3()).into(img3);
+
+
+
+
+                        if (hItem.getImg_hotel().getImg1() != null && !hItem.getImg_hotel().getImg1().isEmpty()) {
+                            Picasso.get().load(hItem.getImg_hotel().getImg1()).into(img1);
+                            imagesList.add(new Photos(hItem.getImg_hotel().getImg1()));
+                        }else {
+                            img1.setImageResource(R.drawable.img_not_found);
+                            imagesList.add(new Photos(img_notFound));
+                        }
+
+                        if (hItem.getImg_hotel().getImg2() != null && !hItem.getImg_hotel().getImg2().isEmpty()){
+                            Picasso.get().load(hItem.getImg_hotel().getImg2()).into(img2);
+                            imagesList.add(new Photos(hItem.getImg_hotel().getImg2()));
+                        }else {
+                            img2.setImageResource(R.drawable.img_not_found);
+                            imagesList.add(new Photos(img_notFound));
+                        }
+
+                        if (hItem.getImg_hotel().getImg3() != null && !hItem.getImg_hotel().getImg3().isEmpty()){
+                            Picasso.get().load(hItem.getImg_hotel().getImg3()).into(img3);
+                            imagesList.add(new Photos(hItem.getImg_hotel().getImg3()));
+                        }else {
+                            img3.setImageResource(R.drawable.img_not_found);
+                            imagesList.add(new Photos(img_notFound));
+                        }
+
                         txtName.setText(hItem.getName_hotel());
                         txtAddress.setText(hItem.getAddress_hotel());
                         txtDecreption.setText(hItem.getDecription());

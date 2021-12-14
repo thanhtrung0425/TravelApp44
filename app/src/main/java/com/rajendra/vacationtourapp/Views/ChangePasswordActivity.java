@@ -2,8 +2,10 @@ package com.rajendra.vacationtourapp.Views;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
@@ -76,7 +78,6 @@ public class ChangePasswordActivity extends AppCompatActivity {
                         if (current.equals(passCheckData)){
                             if(newPass.equals(reType)){
                                 SaveChangesPass(newPass);
-                                finish();
                             }
                             else {
                                 Toast.makeText(getApplicationContext(), "Passwords do not match", Toast.LENGTH_SHORT).show();
@@ -99,7 +100,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
                             Log.d("PASSWORDS", "User password updated.");
-                            Toast.makeText(getApplicationContext(), "Password is changed", Toast.LENGTH_SHORT).show();
+                            Notification();
                         }
                     }
                 });
@@ -126,6 +127,19 @@ public class ChangePasswordActivity extends AppCompatActivity {
             onBackPressed();
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void Notification(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(ChangePasswordActivity.this);
+        builder.setTitle("Notification!");
+        builder.setMessage("The password was changed");
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                finish();
+            }
+        });
+        builder.show();
     }
 
     private String getIdUser(String getEmail){

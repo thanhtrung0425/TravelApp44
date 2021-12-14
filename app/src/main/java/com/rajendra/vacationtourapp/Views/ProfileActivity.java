@@ -113,7 +113,7 @@ public class ProfileActivity extends AppCompatActivity {
                 txtCountry.setText(country);
                 txtEmail.setText(email);
                 txtPhone.setText(phone);
-                if (!avatar.equals(""))
+                if (avatar != null && !avatar.equals(""))
                     Picasso.get().load(avatar).into(imgAvatar);
             }
             @Override

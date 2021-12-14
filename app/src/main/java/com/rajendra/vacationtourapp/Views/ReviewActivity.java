@@ -142,10 +142,10 @@ public class ReviewActivity extends AppCompatActivity {
 
     private void getListReviewFromDataBase() {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRefHotel = database.getReference("review");
+        DatabaseReference myRefReview = database.getReference("review");
 
 
-        myRefHotel.addValueEventListener(new ValueEventListener() {
+        myRefReview.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()){
