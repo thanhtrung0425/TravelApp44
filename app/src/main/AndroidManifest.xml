@@ -29,7 +29,7 @@
         <activity
             android:name=".Views.ReviewActivity"
             android:exported="true"
-            android:theme="@style/Add" />
+            android:theme="@style/Profile" />
         <activity
             android:name=".Views.ProfileActivity"
             android:exported="true"
@@ -43,7 +43,7 @@
         <activity
             android:name=".Views.DetailsActivity"
             android:exported="true"
-            android:theme="@style/Add" />
+            android:theme="@style/Profile" />
         <activity
             android:name=".MainActivity"
             android:windowSoftInputMode="adjustResize|adjustPan" />

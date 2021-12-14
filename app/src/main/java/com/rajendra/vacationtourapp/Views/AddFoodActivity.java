@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -36,6 +37,7 @@ import java.util.HashMap;
 
 public class AddFoodActivity extends AppCompatActivity implements View.OnClickListener{
 
+    private TextView txtaddFood;
     private EditText edtID, edtName, edtAddress, edtImg, edtPrice, edtRate;
     private Button btnInsert, btnShow, btnUpdate;
     private FoodModel food;
@@ -52,6 +54,7 @@ public class AddFoodActivity extends AppCompatActivity implements View.OnClickLi
         Intent getjob = getIntent();
         String job = getjob.getStringExtra("job");
         if(job.equals("update")){
+            txtaddFood.setText("Update food to database");
             btnInsert.setVisibility(View.INVISIBLE);
             btnShow.setVisibility(View.VISIBLE);
             btnUpdate.setVisibility(View.VISIBLE);
@@ -123,6 +126,7 @@ public class AddFoodActivity extends AppCompatActivity implements View.OnClickLi
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(drawable);
 
+        txtaddFood = findViewById(R.id.txtaddfood);
         edtID = findViewById(R.id.FedtInsertId);
         edtName = findViewById(R.id.FedtInsertname);
         edtAddress = findViewById(R.id.FedtInsertAddress);

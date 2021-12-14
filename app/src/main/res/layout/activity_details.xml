@@ -168,7 +168,7 @@
             android:text="Find location here"
             android:layout_marginTop="15dp"
             android:layout_marginBottom="20dp"
-            android:background="@drawable/roundedbutton"
+            android:background="@drawable/roundedbutton2"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/txt_decription"
             app:layout_constraintStart_toStartOf="@+id/txt_decription"

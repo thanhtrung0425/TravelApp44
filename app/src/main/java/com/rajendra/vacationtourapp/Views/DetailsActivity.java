@@ -1,6 +1,7 @@
 package com.rajendra.vacationtourapp.Views;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
@@ -200,6 +201,7 @@ public class DetailsActivity extends AppCompatActivity {
 
     private void setFindViewByID(){
 
+        getSupportActionBar().setTitle("Details");
         Drawable drawable = getResources().getDrawable(R.drawable.ic_baseline_close_24);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(drawable);

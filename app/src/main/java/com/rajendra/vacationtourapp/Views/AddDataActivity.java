@@ -39,7 +39,7 @@ import java.util.HashMap;
 
 public class AddDataActivity extends AppCompatActivity implements View.OnClickListener{
 
-    private TextView tvPrice;
+    private TextView tvPrice, txt1;
     private EditText edtInsertID, edtInsertName, edtInsertAddress, edtInsertIMG1, edtInsertIMG2, edtInsertIMG3;
     private EditText edtInsertDecription, edtInsertLatitude, edtInsertLongtitude, edtInsertPrice;
     private Button btnInsert, btnShowData, btnUpdate;
@@ -87,7 +87,7 @@ public class AddDataActivity extends AppCompatActivity implements View.OnClickLi
                         PushDataToRealtimeDataBase(keys, idItem);
                     }
                 }else
-                    Toast.makeText(AddDataActivity.this, "Nhap day du thong tin", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AddDataActivity.this, "Please fill all the information", Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -177,7 +177,7 @@ public class AddDataActivity extends AppCompatActivity implements View.OnClickLi
                 hashMap.put("location", location);
             }
             else
-                Toast.makeText(AddDataActivity.this, "Nhap day du thong tin", Toast.LENGTH_SHORT).show();
+                Toast.makeText(AddDataActivity.this, "Please fill all the information", Toast.LENGTH_SHORT).show();
         }
         }catch (Exception e) {
             Toast.makeText(AddDataActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
@@ -219,10 +219,21 @@ public class AddDataActivity extends AppCompatActivity implements View.OnClickLi
         edtInsertLatitude = findViewById(R.id.edtInsertLatitude);
         edtInsertLongtitude = findViewById(R.id.edtInsertLongtitude);
         edtInsertPrice = findViewById(R.id.edtInsertPrice);
-        if (key.equals("hotel")){
-            tvPrice.setVisibility(View.VISIBLE);
-            edtInsertPrice.setVisibility(View.VISIBLE);
+        txt1 = findViewById(R.id.txt1);
+        if (job.equals("insert")){
+            if (key.equals("hotel")){
+                txt1.setText("Add hotel to database");
+                tvPrice.setVisibility(View.VISIBLE);
+                edtInsertPrice.setVisibility(View.VISIBLE);
+            }
         }
+        if (job.equals("update")){
+            if (key.equals("hotel"))
+                txt1.setText("Update hotel to databse");
+            if (key.equals("place"))
+                txt1.setText("Update place to databse");
+        }
+
 
     }
 

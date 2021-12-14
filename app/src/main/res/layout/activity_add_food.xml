@@ -15,8 +15,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="40dp"
         android:text="Add food to database"
-        android:textSize="25dp"
         android:textColor="#000000"
+        android:textSize="25dp"
         android:textStyle="bold" />
 
     <TextView
