@@ -170,11 +170,11 @@ Các `fragment` không có file giao diện xml thường được gọi là h
 <img src="https://i.imgur.com/4OKF2aS.jpg" width="350"/>
 
 <a name="add"></a>
-## 4. chức năng thêm và sửa
+## 4.1. chức năng thêm và sửa
 <img src="https://i.imgur.com/2xUQNYI.jpg" width="350"/>
 
 <a name="remove"></a>
-## 4. Chức năng xóa
+## 4.2. Chức năng xóa
 <img src="https://i.imgur.com/4091hh1.jpg" width="350"/>
 
 <a name="klhpt"></a>
