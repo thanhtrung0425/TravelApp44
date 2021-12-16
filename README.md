@@ -34,7 +34,7 @@
     - [3.10. Chức năng xem người dùng](#user)
     - [3.11. Chức năng đổi mật khẩu](#change)
     - [3.12. Chức năng tìm địa chỉ](#dc)
-  -[4. Sử dụng tài khoản admin](#admin)
+  - [4. Sử dụng tài khoản admin](#admin)
     - [4.1. Chức năng thêm và sửa](#add)
     - [4.2. Chức năng xóa](#remove)
 
