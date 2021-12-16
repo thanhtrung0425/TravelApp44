@@ -12,16 +12,16 @@
   
 [II. Cơ sở lí thuyết](#cosolithuyet)
 - [1. Firebase](#firebase)
-  - [1.1. Firebase Tools](#fbt)
-    - [1.1.1. Firebase Authentication](#fbau)
-    - [1.1.2. Realtime Database](#rdb)
-    - [1.1.3. Cloud Firestore](#cfs)
-    - [1.1.4. Cloud Storage for Firebase](#csf)
+- [2. Firebase Tools](#fbt)
+  - [2.1. Firebase Authentication](#fbau)
+  - [2.2. Realtime Database](#rdb)
+  - [2.3. Cloud Firestore](#cfs)
+  - [2.4. Cloud Storage for Firebase](#csf)
     
 [III. Phân tích và thiết kế hệ thống](#phantichthietke)
   - [1. Mô hình MVVM](#mvvm)
   - [2. Fragment](#fragment)
-  - [3. Chức năng hệ thống](#chucnanght)
+  - [3. Sử dụng tài khoản người dùng](#chucnanght)
     - [3.1. Chức năng đăng nhập](#dn)
     - [3.2. Chức năng đăng kí](#dk)
     - [3.3. Chức năng xem địa điểm](#dd)
@@ -33,6 +33,10 @@
     - [3.9. Chức năng tìm kiếm](#tk)
     - [3.10. Chức năng xem người dùng](#user)
     - [3.11. Chức năng đổi mật khẩu](#change)
+    - [3.12. Chức năng tìm địa chỉ](#dc)
+  -[4. Sử dụng tài khoản admin](#admin)
+    - [4.1. Chức năng thêm và sửa](#add)
+    - [4.2. Chức năng xóa](#remove)
 
 [IV. Kết luận và hướng phát triển](#klhpt)
 - [1. Kết luận](#kl)
@@ -90,7 +94,7 @@ Lợi ích của `Firebase`: giúp các lập trình viên rút ngắn thời gi
 `Cloud Firestore` là một cơ sở dữ liệu NoQuery được lưu trữ trên đám mây mà các ứng dụng IOS, Android, Web có thể truy cập trực tiếp thông qua SDK. `Cloud Firestore` cũng có sẵn trong Node. js, Java, Python và Go SDKs, REST và RPC APIs.
 <img src="https://i.imgur.com/lLWSHnu.jpg" width="600">
 
-<a name="cfs"></a>
+<a name="csf"></a>
 ### 2.4. Cloud Storage for Firebase
 `Cloud Storage for Firebase` là không gian lưu trữ dữ liệu. Dữ liệu ở đây không có giới hạn nào cả. Bạn có thể chứa bất kì các (loại) tập tin nào mà bạn muốn, như ảnh, nhạc, video hoặc các tập tin text, zip hay thậm chí là một tập tin với kiểu dữ liệu của riêng bạn thiết kế.
 <img src="https://i.imgur.com/BltRgue.jpg" width="600">
@@ -110,7 +114,7 @@ Các `fragment` không có file giao diện xml thường được gọi là h
 <img src="https://i.imgur.com/LoQUjPg.png" width="600">
 
 <a name="chucnanght"></a>
-## 3. Chức năng hệ thống
+## 3. Sử dụng tài khoản người dùng
 
 <a name="dn"></a>
 ## 3.1. Chức năng đăng nhập
@@ -157,14 +161,40 @@ Các `fragment` không có file giao diện xml thường được gọi là h
 ## 3.11. Chức năng thay đổi mật khẩu 
 <img src="https://i.imgur.com/pjTGxGy.jpg" width="350">
 
+<a name="dc"></a>
+## 3.12. Chức năng tìm địa chỉ 
+<img src="https://media.giphy.com/media/nz1jWJtTwmMjLC2dt1/giphy.gif" width="350"/>
+
+<a name="admin"></a>
+## 4. Sử dụng tài khoản admin
+<img src="https://i.imgur.com/4OKF2aS.jpg" width="350"/>
+
+<a name="add"></a>
+## 4. chức năng thêm và sửa
+<img src="https://i.imgur.com/2xUQNYI.jpg" width="350"/>
+
+<a name="remove"></a>
+## 4. Chức năng xóa
+<img src="https://i.imgur.com/4091hh1.jpg" width="350"/>
+
 <a name="klhpt"></a>
 ## IV. Kết luận và hướng phát triển
   
 <a name="kl"></a>
 ## 1. Kết luận 
+Ứng dụng dễ sử dụng, giao điện bắt mắt, gần gũi.
+Quản lí chặt chẽ phân quyền người sử dụng hợp lí.
+Hoàn thành tương đối phân tích thiết kế hệ thống.
+Thiết kế ứng dụng có các chức năng cơ bản đáp ứng được yêu cầu sử dụng của người dùng.
+Song bên cạnh đó nếu có thêm thời gian để phát triển và hoàn thiện hơn thì ứng dụng sẽ rất hữu ích đối với nhu cầu của người du lịch. 
+Hạn chế: Ứng dụng có tính chuyên nghiệp chưa cao, chưa giải quyết được trọn vẹn những vấn đề nảy sinh trong quá trình sử dụng, chưa đạt tính thẩm mỹ cao
 
 <a name="hpt"></a>
 ## 2. Hướng phát triển
+Cải thiện giao diện đẹp mắt, thân thiện, dễ sử dụng hơn, phù hợp với mọi lứa tuổi.
+Cải thiện việc truy cập, tìm kiếm dữ liệu tốc độ nhanh, độ chính xác cao.
+Nâng cấp thêm chức năng chỉ đường, đặt phòng khách sạn, book tour du lịch,..
+Nâng cấp hệ thống đăng nhập (đăng nhập bằng Facebook, Google, ..).
 
 ===============================
 <a name="tltk"></a>
